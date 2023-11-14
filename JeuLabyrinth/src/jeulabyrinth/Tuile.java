@@ -5,6 +5,7 @@
 package jeulabyrinth;
 
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -12,12 +13,118 @@ import java.util.ArrayList;
  */
 public class Tuile {
     
-    // attribut ways qui est une ArrayList, qui comporte toutes les directions de passage que la tuile peut permetre
-    ArrayList<String> ways; 
+    // attribut direction qui est une ArrayList, qui comporte toutes les directions que le joueur peut emprunter
+    ArrayList<String> direction = new ArrayList<String>(); 
     // attribut object qui est un String, indique quel objet est present sur la tuile, indique null si aucun objet est present
-    String object = null;
+    String object;
     // attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
     boolean onBoard = true;
+
+    
+    
+    /**
+     * Constructeur, attribut des valeurs aux diff?rents parametres en fonction de ce qu'on lui donne en parametre de fonction
+     * @param direction attribut ways qui est une ArrayList, qui comporte toutes les directions de passage que la tuile peut permetre
+     * @param object attribut object qui est un String, indique quel objet est present sur la tuile, indique null si aucun objet est present
+     * @param onBoard attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
+     */
+    public Tuile(ArrayList<String> direction, String object) {
+        this.direction = direction;
+        this.object = object;
+    }
+    
+    
+    
+    // M?thode pour ajouter une direction ? l'ArrayList direction
+    public void ajouterDirection(String way) {
+        direction.add(way);
+    }
+    
+    
+    // methode pour tourner la tuile dans le sens horaire, ce qui change les valeurs de direction
+    public void tournerTuileSensHoraire() {
+        
+        for (int i = 0 ; i < direction.size() ; i++) {
+               
+            // remplacer "haut" par "droite"
+            if (direction.get(i) == "haut") {
+                direction.set(i, "droite");
+            }
+        
+            // remplacer "droite" par "bas"
+            else if (direction.get(i) == "droite") {
+                direction.set(i, "bas");
+            }
+        
+            // remplacer "bas" par "gauche"
+            else if (direction.get(i) == "bas") {
+                direction.set(i, "gauche");
+            }
+        
+            // remplacer "gauche" par "haut"
+            else if (direction.get(i) == "gauche") {
+                direction.set(i, "haut");
+            } 
+        }
+    }
+    
+    
+    // methode pour tourner la tuile dans le sens trigonom?trique, ce qui change les valeurs de direction
+    public void tournerTuileSensTrigo() {
+        
+        for (int i = 0 ; i < direction.size() ; i++) {
+               
+            // remplacer "haut" par "gauche"
+            if (direction.get(i) == "haut") {
+                direction.set(i, "gauche");
+            }
+        
+            // remplacer "gauche" par "bas"
+            else if (direction.get(i) == "gauche") {
+                direction.set(i, "bas");
+            }
+        
+            // remplacer "bas" par "droite"
+            else if (direction.get(i) == "bas") {
+                direction.set(i, "droite");
+            }
+        
+            // remplacer "droite" par "haut"
+            else if (direction.get(i) == "droite") {
+                direction.set(i, "haut");
+            } 
+        }
+    }
+
+    
+    
+    public String getObject() {
+        return object;
+    }
+    
+
+    public ArrayList<String> getDirection() {
+        return direction;
+    }
+
+    
+    public boolean isOnBoard() {
+        return onBoard;
+    }
+
+    
+    public void setOnBoard(boolean onBoard) {
+        this.onBoard = onBoard;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "Tuile{" + "direction=" + direction + ", object=" + object + ", onBoard=" + onBoard + '}';
+    }
+    
+    
+    
     
     
     

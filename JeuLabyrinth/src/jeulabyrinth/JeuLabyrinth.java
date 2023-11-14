@@ -4,6 +4,9 @@
  */
 package jeulabyrinth;
 
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Alexandre
@@ -15,6 +18,19 @@ public class JeuLabyrinth {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+    
+    Tuile araignee = new Tuile(new ArrayList<>() , "araign?e");
+    araignee.ajouterDirection("haut");
+    araignee.ajouterDirection("bas"); 
+    
+    System.out.println(araignee);
+    araignee.tournerTuileSensHoraire();
+    System.out.println(araignee);
+    araignee.tournerTuileSensHoraire();
+    System.out.println(araignee);
+    araignee.tournerTuileSensTrigo();
+    System.out.println(araignee);
+    
     }
     
 }
