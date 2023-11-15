@@ -29,7 +29,6 @@ public class Plateau {
         
         ajoutTuilesDeJeu();
         grilleDeJeu = creerGrilleDeJeu();
-        System.out.println(TuilesDeJeu);
         
         
     }
@@ -140,7 +139,7 @@ public class Plateau {
         int indexDico = 0;
         for (int i = 0 ; i<7 ; i+=2){
             for (int j=0 ; j<7 ; j+=2) {
-                ajouterTuileAGrilleDeJeu(grille, DicoTuilesFixes[indexDico], i, j);
+                ajouterTuileFixeAGrilleDeJeu(grille, DicoTuilesFixes[indexDico], i, j);
                 indexDico+=1;
             }
         }  
@@ -152,13 +151,13 @@ public class Plateau {
                 if (i%2 == 0) {
                     if (j%2 == 1){
                         Tuile t = GetTuileAleat();
-                        ajouterTuileAGrilleDeJeu(grille, t.getName(), i, j);
+                        ajouterTuileAGrilleDeJeu(grille, t, i, j);
                     }
                 } 
                 // sinon, pour les lignes d'indice impair (1,3,5), ajouter des tuiles sur toutes les colonnes
                 else {
                     Tuile t = GetTuileAleat();
-                    ajouterTuileAGrilleDeJeu(grille, t.getName(), i, j);
+                    ajouterTuileAGrilleDeJeu(grille, t, i, j);
                 }
             }
         }
@@ -195,8 +194,8 @@ public class Plateau {
     }
     
     
-    // methode pour ajouter une tuile pr?cise ? la grille de jeu, cette tuile est ensuite retiree de l'arrayList
-    public Tuile[][] ajouterTuileAGrilleDeJeu(Tuile[][] grille, String name, int nLigne, int nColonne) {
+    // methode pour ajouter une tuile fixe ? la grille de jeu, cette tuile est ensuite retiree de l'arrayList
+    public Tuile[][] ajouterTuileFixeAGrilleDeJeu(Tuile[][] grille, String name, int nLigne, int nColonne) {
         
         for (Tuile tuile : TuilesDeJeu) {
             if (tuile.getName().equals(name)) {
@@ -207,6 +206,15 @@ public class Plateau {
         }
          
        return grille;
+    }
+    
+    
+    // methode pour ajouter une tuile pr?cise ? la grille de jeu, cette tuile est ensuite retiree de l'arrayList
+    public Tuile[][] ajouterTuileAGrilleDeJeu(Tuile[][] grille, Tuile t, int nLigne, int nColonne) {
+        
+        grille[nLigne][nColonne] = t;
+        TuilesDeJeu.remove(t);        
+        return grille;
     }
     
     
