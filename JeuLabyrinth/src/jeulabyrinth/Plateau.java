@@ -26,7 +26,7 @@ public class Plateau {
         
         for (int i=0 ; i<7 ; i++){
             for (int j=0 ; j<7 ; j++) {
-                grille[i][j] = new Tuile(new ArrayList<>() , "arraignee");
+                grille[i][j] = new Tuile("arraignee");
                 grille[i][j].ajouterDirection("haut");
             }
         }   
@@ -96,7 +96,7 @@ public class Plateau {
     
     // methode pour creer une tuile de type "objet"
     public Tuile creerTuileObjet(String objet){
-        Tuile tuile = new Tuile(new ArrayList<>(), objet);
+        Tuile tuile = new Tuile(objet);
         return tuile;
     }
     

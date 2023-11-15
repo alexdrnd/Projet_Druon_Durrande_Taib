@@ -17,6 +17,8 @@ public class Tuile {
     ArrayList<String> direction = new ArrayList<String>(); 
     // attribut object qui est un String, indique quel objet est present sur la tuile, indique null si aucun objet est present
     String object;
+    // attribut nom qui est un String, qui indique ce que represente la case (objet, chemin, corner)
+    String name;
     // attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
     boolean onBoard = true;
 
@@ -28,9 +30,10 @@ public class Tuile {
      * @param object attribut object qui est un String, indique quel objet est present sur la tuile, indique null si aucun objet est present
      * @param onBoard attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
      */
-    public Tuile(ArrayList<String> direction, String object) {
-        this.direction = direction;
+    public Tuile(String object) {
+        this.direction = new ArrayList<>();
         this.object = object;
+        this.name = object;
     }
     
     
@@ -101,6 +104,11 @@ public class Tuile {
     public String getObject() {
         return object;
     }
+
+    
+    public String getName() {
+        return name;
+    }
     
 
     public ArrayList<String> getDirection() {
@@ -120,7 +128,7 @@ public class Tuile {
     
     @Override
     public String toString() {
-        return "Tuile{" + "direction=" + direction + ", object=" + object + ", onBoard=" + onBoard + '}';
+        return name + "{" + "direction=" + direction + ", object=" + object + ", onBoard=" + onBoard + '}';
     }
     
     
