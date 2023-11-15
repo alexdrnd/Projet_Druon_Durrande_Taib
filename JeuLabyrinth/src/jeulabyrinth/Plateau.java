@@ -26,11 +26,8 @@ public class Plateau {
     
     public Plateau() {
         
-        
         ajoutTuilesDeJeu();
         grilleDeJeu = creerGrilleDeJeu();
-        
-        
     }
     
     
@@ -170,7 +167,7 @@ public class Plateau {
     }
     
     
-    // methode qui renvoit le dictionnaire comprenant le nom des tuiles fixes
+    // methode qui renvoit le dictionnaire comprenant le nom des tuiles fixes, rang?e dans l'ordre
     public String[] DicoTuilesFixes() {
         // dictionnaire
         String[] DicoTuilesFixes = {"departB",
@@ -234,5 +231,72 @@ public class Plateau {
         // retourner la tuile
         return t;
     }
+    
+    
+    // methodes qui permettent d'inserer la tuileCourante dans le plateau
+    //methode pour inserer la tuile courante sur une ligne vers la droite (du cote gauche)
+    public void insererTuileLigneAGauche(int nLigne){
+        //on peut bouger uniquement les lignes d'indice impair
+        if (nLigne%2==1 && nLigne<7){
+            Tuile tDeReserve = grilleDeJeu[nLigne][6];
+            // basculer les tuiles vers la droite 
+            for (int i=0 ; i<6 ; i++) {
+                grilleDeJeu[nLigne][6-i] = grilleDeJeu[nLigne][5-i];
+            }
+            grilleDeJeu[nLigne][0] = tuileCourante;
+            grilleDeJeu[nLigne][0].setOnBoard(true);
+            tuileCourante = tDeReserve;
+            tuileCourante.setOnBoard(false);
+        }
+    }
+    
+    //methode pour inserer la tuile courante sur une ligne vers la gauche (du cote droit)
+    public void insererTuileLigneADroite(int nLigne){
+        //on peut bouger uniquement les lignes d'indice impair
+        if (nLigne%2==1 && nLigne<7){
+            Tuile tDeReserve = grilleDeJeu[nLigne][0];
+            // basculer les tuiles vers la gauche 
+            for (int i=0 ; i<6 ; i++) {
+                grilleDeJeu[nLigne][i] = grilleDeJeu[nLigne][1+i];
+            }
+            grilleDeJeu[nLigne][6] = tuileCourante;
+            grilleDeJeu[nLigne][6].setOnBoard(true);
+            tuileCourante = tDeReserve;
+            tuileCourante.setOnBoard(false);
+        }
+    }
+    
+    //methode pour inserer la tuile courante sur une colonne vers le bas (en haut)
+    public void insererTuileColonneHaut(int nColonne){
+        //on peut bouger uniquement les colonne d'indice impair
+        if (nColonne%2==1 && nColonne<7){
+            Tuile tDeReserve = grilleDeJeu[6][nColonne];
+            // basculer les tuiles vers le bas 
+            for (int i=0 ; i<6 ; i++) {
+                grilleDeJeu[6-i][nColonne] = grilleDeJeu[5-i][nColonne];
+            }
+            grilleDeJeu[0][nColonne] = tuileCourante;
+            grilleDeJeu[0][nColonne].setOnBoard(true);
+            tuileCourante = tDeReserve;
+            tuileCourante.setOnBoard(false);
+        }
+    }
+    
+    //methode pour inserer la tuile courante sur une colonne vers le haut (en bas)
+    public void insererTuileColonneBas(int nColonne){
+        //on peut bouger uniquement les colonne d'indice impair
+        if (nColonne%2==1 && nColonne<7){
+            Tuile tDeReserve = grilleDeJeu[0][nColonne];
+            // basculer les tuiles vers le haut 
+            for (int i=0 ; i<6 ; i++) {
+                grilleDeJeu[i][nColonne] = grilleDeJeu[i+1][nColonne];
+            }
+            grilleDeJeu[6][nColonne] = tuileCourante;
+            grilleDeJeu[6][nColonne].setOnBoard(true);
+            tuileCourante = tDeReserve;
+            tuileCourante.setOnBoard(false);
+        }
+    }
+    
     
 }
