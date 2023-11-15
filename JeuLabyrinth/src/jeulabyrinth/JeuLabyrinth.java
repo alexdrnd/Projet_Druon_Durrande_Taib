@@ -21,13 +21,8 @@ public class JeuLabyrinth {
     
     Plateau p = new Plateau();
     System.out.println(p.grilleDeJeu[1][0]);
-    System.out.println(p.tuileCourante);
-    System.out.println(p.grilleDeJeu[1][6]);
-    p.insererTuileLigneAGauche(1);
-    System.out.println(p.grilleDeJeu[1][1]);
-    System.out.println(p.grilleDeJeu[1][0]);
-    System.out.println(p.tuileCourante);
-    
+    System.out.println(p.getObjet(1, 0));
+    System.out.println(p.getDirection(1, 0));
     }
     
 }
