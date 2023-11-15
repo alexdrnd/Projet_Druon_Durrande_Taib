@@ -5,6 +5,7 @@
 package jeulabyrinth;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 
@@ -14,10 +15,12 @@ import java.util.ArrayList;
  */
 public class Plateau {
     
-    // attribut grille qui est un tableau ? deux dimensions de Tuiles, qui va permettre de repr?senter la grille de jeu
-    Tuile[][] grille = new Tuile[7][7];
+    // attribut grilleDeJeu qui est un tableau ? deux dimensions de Tuiles, qui va permettre de repr?senter la grille de jeu
+    Tuile[][] grilleDeJeu;
     // attribut TuilesDeJeu qui est une ArrayList, elle contient toutes les tuiles du jeu (tuiles "objets", tuiles "d?part", tuiles "chemin, tuiles "corner")
     ArrayList<Tuile> TuilesDeJeu = new ArrayList<Tuile>();
+    // attribut tuileCourante, qui contient la tuile qui n'est pas sur le plateau
+    Tuile tuileCourante;
     
     
     
@@ -25,12 +28,14 @@ public class Plateau {
         
         
         ajoutTuilesDeJeu();
+        grilleDeJeu = creerGrilleDeJeu();
         System.out.println(TuilesDeJeu);
+        
         
     }
     
     
-    // methode qui cr?er et ajoute ? la liste l'ensemble des tuiles du jeu
+    // methode qui cr?er et ajoute ? la liste TuilesDeJeu l'ensemble des tuiles du jeu
     public void ajoutTuilesDeJeu() {
         
         // ajouter les 24 tuiles "objet"
@@ -64,7 +69,7 @@ public class Plateau {
     }
     
     
-    // methode qui renvoit le dictionnaire comprenant les infos des object et des direction de chaque tuile
+    // methode qui renvoit le dictionnaire comprenant les infos des direction de chaque tuile "objet"
     public String[][][][] DicoObjets(){
         // dictionnaire
         String[][][][] DicoObjets = {
@@ -95,7 +100,7 @@ public class Plateau {
                                     {{{"departB","droite","bas",null}}},
                                     {{{"departJ","haut","droite",null}}},
                                     {{{"departR","haut","gauche",null}}},
-                                    {{{"departV","bas","gauche",null}}}, 
+                                    {{{"departV","bas","gauche",null}}} 
                                     };
         
         return DicoObjets;
@@ -121,6 +126,105 @@ public class Plateau {
         tuile.ajouterDirection("droite");
         tuile.ajouterDirection("bas");
         return tuile;
+    }
+    
+    
+    // methode qui permet de creer la grille de jeu
+    public Tuile[][] creerGrilleDeJeu() {
+        
+        //creer la grille de dimension 7x7
+        Tuile[][] grille = new Tuile[7][7];
+        
+        // placer les tuiles fixes, celles qui ne peuvent pas bouger (elles contiennent toutes un objet)
+        String[] DicoTuilesFixes = DicoTuilesFixes();
+        int indexDico = 0;
+        for (int i = 0 ; i<7 ; i+=2){
+            for (int j=0 ; j<7 ; j+=2) {
+                ajouterTuileAGrilleDeJeu(grille, DicoTuilesFixes[indexDico], i, j);
+                indexDico+=1;
+            }
+        }  
+        
+        // placer les autres tuiles aleatoirement et melangees (on tourne un nombre de fois aleatoire la tuile pour que les directions soit au hazard)
+        for (int i=0 ; i<7 ; i++) {
+            for (int j=0 ; j<7 ; j++) {
+                // pour les lignes d'indice pair (0,2,4,6), ajouter seulement des tuiles sur les colonnes impairs (1,3,5)
+                if (i%2 == 0) {
+                    if (j%2 == 1){
+                        Tuile t = GetTuileAleat();
+                        ajouterTuileAGrilleDeJeu(grille, t.getName(), i, j);
+                    }
+                } 
+                // sinon, pour les lignes d'indice impair (1,3,5), ajouter des tuiles sur toutes les colonnes
+                else {
+                    Tuile t = GetTuileAleat();
+                    ajouterTuileAGrilleDeJeu(grille, t.getName(), i, j);
+                }
+            }
+        }
+        
+        tuileCourante = TuilesDeJeu.get(0);
+        tuileCourante.onBoard = false;
+        
+        return grille;
+        
+    }
+    
+    
+    // methode qui renvoit le dictionnaire comprenant le nom des tuiles fixes
+    public String[] DicoTuilesFixes() {
+        // dictionnaire
+        String[] DicoTuilesFixes = {"departB",
+                                    "heaume",
+                                    "chandelier",
+                                    "departV",
+                                    "epee",
+                                    "saphir",
+                                    "tresor",
+                                    "bague",
+                                    "crane",
+                                    "cle",
+                                    "couronne",
+                                    "carteTresor",
+                                    "departJ",
+                                    "bourse",
+                                    "livre",
+                                    "departR"
+                                    };
+        return DicoTuilesFixes;
+    }
+    
+    
+    // methode pour ajouter une tuile pr?cise ? la grille de jeu, cette tuile est ensuite retiree de l'arrayList
+    public Tuile[][] ajouterTuileAGrilleDeJeu(Tuile[][] grille, String name, int nLigne, int nColonne) {
+        
+        for (Tuile tuile : TuilesDeJeu) {
+            if (tuile.getName().equals(name)) {
+                grille[nLigne][nColonne] = tuile;
+                TuilesDeJeu.remove(tuile);
+                break; // Arr?ter la boucle car la tuile a ?t? trouv?e
+            }
+        }
+         
+       return grille;
+    }
+    
+    
+    // methode qui retourne aleatoirement une tuile dans l'arrayList TuilesDeJeu et qui la tourne aleatoirement
+    public Tuile GetTuileAleat(){
+        // piocher aleatoirement une tuile dans l'arraylist TuilesDeJeu
+        Random random = new Random();
+        int indexTuileAleat = random.nextInt(TuilesDeJeu.size());
+        Tuile t = TuilesDeJeu.get(indexTuileAleat);
+        
+        // tourner un nombre aleatoire de fois cette tuile
+        int nbTour = random.nextInt(1, 5);
+        for (int i=0 ; i<nbTour ; i++) {
+            t.tournerTuileSensHoraire();
+        }
+        
+        // retourner la tuile
+        return t;
     }
     
 }
