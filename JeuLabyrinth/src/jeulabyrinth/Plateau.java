@@ -25,7 +25,6 @@ public class Plateau {
     
     
     public Plateau() {
-        
         ajoutTuilesDeJeu();
         grilleDeJeu = creerGrilleDeJeu();
     }
@@ -33,7 +32,6 @@ public class Plateau {
     
     // methode qui cr?er et ajoute ? la liste TuilesDeJeu l'ensemble des tuiles du jeu
     public void ajoutTuilesDeJeu() {
-        
         // ajouter les 24 tuiles "objet"
         String[][][][] DicoObjets = DicoObjets();
         
@@ -160,10 +158,8 @@ public class Plateau {
         }
         
         tuileCourante = TuilesDeJeu.get(0);
-        tuileCourante.onBoard = false;
-        
+        tuileCourante.setOnBoard(false);
         return grille;
-        
     }
     
     
@@ -296,6 +292,17 @@ public class Plateau {
             tuileCourante = tDeReserve;
             tuileCourante.setOnBoard(false);
         }
+    }
+    
+    
+    // methode qui retourne l'objet de la tuile dont la position est entree en parametre
+    public String getObjet(int nLigne, int nColonne) {
+        return grilleDeJeu[nLigne][nColonne].getObject();
+    }
+    
+    //methode qui retourne l'arraylist direction de la tuile la position est entree en parametre
+    public ArrayList<String> getDirection(int nLigne, int nColonne) {
+        return grilleDeJeu[nLigne][nColonne].getDirection();
     }
     
     
