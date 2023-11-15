@@ -20,6 +20,8 @@ public class JeuLabyrinth {
         // TODO code application logic here
     
     Plateau p = new Plateau();
+    System.out.println(p.TuilesDeJeu.get(1));
+    
     
     }
     
