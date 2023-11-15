@@ -15,21 +15,14 @@ import java.util.ArrayList;
 public class Plateau {
     
     // attribut grille qui est un tableau ? deux dimensions de Tuiles, qui va permettre de repr?senter la grille de jeu
-    Tuile[][] grille;
+    Tuile[][] grille = new Tuile[7][7];
     // attribut TuilesDeJeu qui est une ArrayList, elle contient toutes les tuiles du jeu (tuiles "objets", tuiles "d?part", tuiles "chemin, tuiles "corner")
     ArrayList<Tuile> TuilesDeJeu = new ArrayList<Tuile>();
     
     
     
     public Plateau() {
-        this.grille = new Tuile[7][7];
         
-        for (int i=0 ; i<7 ; i++){
-            for (int j=0 ; j<7 ; j++) {
-                grille[i][j] = new Tuile("arraignee");
-                grille[i][j].ajouterDirection("haut");
-            }
-        }   
         
         ajoutTuilesDeJeu();
         System.out.println(TuilesDeJeu);
@@ -40,18 +33,32 @@ public class Plateau {
     // methode qui cr?er et ajoute ? la liste l'ensemble des tuiles du jeu
     public void ajoutTuilesDeJeu() {
         
+        // ajouter les 24 tuiles "objet"
         String[][][][] DicoObjets = DicoObjets();
         
-        // ajouter les tuiles "objet"
         for (int i=0 ; i<DicoObjets.length ; i++){
             
+            // ajouter l'objet
             Tuile tuile = creerTuileObjet(DicoObjets[i][0][0][0]);
             
+            // ajouter les directions
             for (int j=1 ; j<4 ; j++) {
                 if (DicoObjets[i][0][0][j]!= null){
                     tuile.ajouterDirection(DicoObjets[i][0][0][j]);
                 }
             }
+            TuilesDeJeu.add(tuile);
+        }
+        
+        // ajouter les 12 tuiles "chemin"
+        for (int i=0 ; i<12 ; i++) {
+            Tuile tuile = creerTuileChemin();
+            TuilesDeJeu.add(tuile);
+        }
+        
+        // ajouter les 10 tuiles "corner"
+        for (int i=0 ; i<10 ; i++) {
+            Tuile tuile = creerTuileCorner();
             TuilesDeJeu.add(tuile);
         }
     }
@@ -96,7 +103,23 @@ public class Plateau {
     
     // methode pour creer une tuile de type "objet"
     public Tuile creerTuileObjet(String objet){
-        Tuile tuile = new Tuile(objet);
+        Tuile tuile = new Tuile(objet, objet);
+        return tuile;
+    }
+    
+    // methode pour creer une tuile de type "chemin"
+    public Tuile creerTuileChemin(){
+        Tuile tuile = new Tuile(null, "chemin");
+        tuile.ajouterDirection("haut");
+        tuile.ajouterDirection("bas");
+        return tuile;
+    }
+    
+    // methode pour creer une tuile de type "corner"
+    public Tuile creerTuileCorner(){
+        Tuile tuile = new Tuile(null, "corner");
+        tuile.ajouterDirection("droite");
+        tuile.ajouterDirection("bas");
         return tuile;
     }
     

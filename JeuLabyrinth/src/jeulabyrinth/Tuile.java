@@ -30,10 +30,10 @@ public class Tuile {
      * @param object attribut object qui est un String, indique quel objet est present sur la tuile, indique null si aucun objet est present
      * @param onBoard attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
      */
-    public Tuile(String object) {
+    public Tuile(String object, String name) {
         this.direction = new ArrayList<>();
         this.object = object;
-        this.name = object;
+        this.name = name;
     }
     
     
