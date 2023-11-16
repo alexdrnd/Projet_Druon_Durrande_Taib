@@ -33,17 +33,17 @@ public class Plateau {
     // methode qui cr?er et ajoute ? la liste TuilesDeJeu l'ensemble des tuiles du jeu
     public void ajoutTuilesDeJeu() {
         // ajouter les 24 tuiles "objet"
-        String[][][][] DicoObjets = DicoObjets();
+        String[][] DicoObjets = DicoObjets();
         
         for (int i=0 ; i<DicoObjets.length ; i++){
             
             // ajouter l'objet
-            Tuile tuile = creerTuileObjet(DicoObjets[i][0][0][0]);
+            Tuile tuile = creerTuileObjet(DicoObjets[i][0]);
             
             // ajouter les directions
             for (int j=1 ; j<4 ; j++) {
-                if (DicoObjets[i][0][0][j]!= null){
-                    tuile.ajouterDirection(DicoObjets[i][0][0][j]);
+                if (DicoObjets[i][j]!= null){
+                    tuile.ajouterDirection(DicoObjets[i][j]);
                 }
             }
             TuilesDeJeu.add(tuile);
@@ -64,38 +64,38 @@ public class Plateau {
     
     
     // methode qui renvoit le dictionnaire comprenant les infos des direction de chaque tuile "objet"
-    public String[][][][] DicoObjets(){
+    public String[][] DicoObjets(){
         // dictionnaire
-        String[][][][] DicoObjets = {
-                                    {{{"araignee","haut","gauche",null}}}, 
-                                    {{{"bague","haut","bas","gauche"}}},
-                                    {{{"bourse","haut","droite","gauche"}}},
-                                    {{{"carteTresor","haut","bas","gauche"}}},
-                                    {{{"chandelier","droite","bas","gauche"}}},
-                                    {{{"chauveSouris","haut","droite","gauche"}}},
-                                    {{{"chouette","droite","bas",null}}},
-                                    {{{"cle","haut","droite","gauche"}}},
-                                    {{{"couronne","haut","bas","gauche"}}},
-                                    {{{"crane","haut","droite","bas"}}},
-                                    {{{"dragon","haut","droite","gauche"}}},
-                                    {{{"epee","haut","droite","bas"}}},
-                                    {{{"fantome","haut","droite","gauche"}}},
-                                    {{{"fee","haut","droite","gauche"}}},
-                                    {{{"genie","haut","droite","gauche"}}},
-                                    {{{"gobelin","haut","droite","gauche"}}},
-                                    {{{"heaume","droite","bas","gauche"}}},
-                                    {{{"lezard","haut","gauche",null}}},
-                                    {{{"livre","haut","droite","gauche"}}},
-                                    {{{"papillon","haut","gauche",null}}},
-                                    {{{"rat","bas","gauche",null}}},
-                                    {{{"saphir","haut","droite","bas"}}},
-                                    {{{"scarabee","haut","droite",null}}},
-                                    {{{"tresor","droite","bas","gauche"}}},
-                                    {{{"departB","droite","bas",null}}},
-                                    {{{"departJ","haut","droite",null}}},
-                                    {{{"departR","haut","gauche",null}}},
-                                    {{{"departV","bas","gauche",null}}} 
-                                    };
+        String[][] DicoObjets = {
+                                    {"araignee","haut","gauche",null}, 
+                                    {"bague","haut","bas","gauche"},
+                                    {"bourse","haut","droite","gauche"},
+                                    {"carteTresor","haut","bas","gauche"},
+                                    {"chandelier","droite","bas","gauche"},
+                                    {"chauveSouris","haut","droite","gauche"},
+                                    {"chouette","droite","bas",null},
+                                    {"cle","haut","droite","gauche"},
+                                    {"couronne","haut","bas","gauche"},
+                                    {"crane","haut","droite","bas"},
+                                    {"dragon","haut","droite","gauche"},
+                                    {"epee","haut","droite","bas"},
+                                    {"fantome","haut","droite","gauche"},
+                                    {"fee","haut","droite","gauche"},
+                                    {"genie","haut","droite","gauche"},
+                                    {"gobelin","haut","droite","gauche"},
+                                    {"heaume","droite","bas","gauche"},
+                                    {"lezard","haut","gauche",null},
+                                    {"livre","haut","droite","gauche"},
+                                    {"papillon","haut","gauche",null},
+                                    {"rat","bas","gauche",null},
+                                    {"saphir","haut","droite","bas"},
+                                    {"scarabee","haut","droite",null},
+                                    {"tresor","droite","bas","gauche"},
+                                    {"departB","droite","bas",null},
+                                    {"departJ","haut","droite",null},
+                                    {"departR","haut","gauche",null},
+                                    {"departV","bas","gauche",null} 
+                                 };
         
         return DicoObjets;
     }
@@ -187,7 +187,7 @@ public class Plateau {
     }
     
     
-    // methode pour ajouter une tuile fixe ? la grille de jeu, cette tuile est ensuite retiree de l'arrayList
+    // methode pour ajouter une tuile fixe a la grille de jeu, cette tuile est ensuite retiree de l'arrayList
     public Tuile[][] ajouterTuileFixeAGrilleDeJeu(Tuile[][] grille, String name, int nLigne, int nColonne) {
         
         for (Tuile tuile : TuilesDeJeu) {
@@ -202,7 +202,7 @@ public class Plateau {
     }
     
     
-    // methode pour ajouter une tuile pr?cise ? la grille de jeu, cette tuile est ensuite retiree de l'arrayList
+    // methode pour ajouter une tuile precise a la grille de jeu, cette tuile est ensuite retiree de l'arrayList
     public Tuile[][] ajouterTuileAGrilleDeJeu(Tuile[][] grille, Tuile t, int nLigne, int nColonne) {
         
         grille[nLigne][nColonne] = t;
@@ -229,7 +229,7 @@ public class Plateau {
     }
     
     
-    // methodes qui permettent d'inserer la tuileCourante dans le plateau
+// methodes qui permettent d'inserer la tuileCourante dans le plateau
     //methode pour inserer la tuile courante sur une ligne vers la droite (du cote gauche)
     public void insererTuileLigneAGauche(int nLigne){
         //on peut bouger uniquement les lignes d'indice impair
