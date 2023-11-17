@@ -23,7 +23,6 @@ public class Plateau {
     Tuile tuileCourante;
     
     
-    
     public Plateau() {
         ajoutTuilesDeJeu();
         grilleDeJeu = creerGrilleDeJeu();
@@ -295,15 +294,60 @@ public class Plateau {
     }
     
     
-    // methode qui retourne l'objet de la tuile dont la position est entree en parametre
-    public String getObjet(int nLigne, int nColonne) {
-        return grilleDeJeu[nLigne][nColonne].getObject();
+    
+    // methode qui verifie les directions d'une tuile donné, pour savoir si on peut avancer sur la tuile d'apres
+    public boolean verifDirection(Tuile t, String direction) {
+        if (t.getDirection().contains(direction)) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
-    //methode qui retourne l'arraylist direction de la tuile la position est entree en parametre
-    public ArrayList<String> getDirection(int nLigne, int nColonne) {
-        return grilleDeJeu[nLigne][nColonne].getDirection();
+    
+    // methode qui avance le joueur sur la tuile suivant s'il peut y aller
+    public void avancerCase(int nLigne, int nColonne, String colPlayer, String direction) {
+        if (grilleDeJeu[nLigne][nColonne].getDirection().contains(direction)) {
+            switch (direction) {
+                case "haut" : 
+                    if (nLigne>0 && nLigne<7) {
+                        if (grilleDeJeu[nLigne-1][nColonne].getDirection().contains("bas")) {
+                            grilleDeJeu[nLigne][nColonne].setColPlayer(null);
+                            grilleDeJeu[nLigne-1][nColonne].setColPlayer(colPlayer);
+                            break;
+                        }break;
+                    }break;
+                case "droite" : 
+                    if (nColonne>=0 && nColonne<6) {
+                        if (grilleDeJeu[nLigne][nColonne+1].getDirection().contains("gauche")) {
+                            grilleDeJeu[nLigne][nColonne].setColPlayer(null);
+                            grilleDeJeu[nLigne][nColonne+1].setColPlayer(colPlayer);
+                            break;
+                        }break;
+                    }break;
+                case "bas" : 
+                    if (nLigne>=0 && nLigne<6) {
+                        if (grilleDeJeu[nLigne+1][nColonne].getDirection().contains("haut")) {
+                            grilleDeJeu[nLigne][nColonne].setColPlayer(null);
+                            grilleDeJeu[nLigne+1][nColonne].setColPlayer(colPlayer);
+                            break;
+                        }break;
+                    }break;
+                case "gauche" : 
+                    if (nColonne>0 && nColonne<7) {
+                        if (grilleDeJeu[nLigne][nColonne-1].getDirection().contains("droite")) {
+                            grilleDeJeu[nLigne][nColonne].setColPlayer(null);
+                            grilleDeJeu[nLigne][nColonne-1].setColPlayer(colPlayer);
+                            break;
+                        }break;
+                    }break;
+            }      
+        }
     }
+    
+    
+    
+ 
     
     
 }

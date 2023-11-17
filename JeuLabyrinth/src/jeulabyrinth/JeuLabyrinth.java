@@ -20,10 +20,15 @@ public class JeuLabyrinth {
         // TODO code application logic here
     
     Plateau p = new Plateau();
-    System.out.println(p.grilleDeJeu[6][6]);
-    p.grilleDeJeu[6][6].tournerTuileSensHoraire();
-    System.out.println(p.getObjet(6, 6));
-    System.out.println(p.getDirection(6, 6));
+    System.out.println(p.grilleDeJeu[5][4]);
+    p.grilleDeJeu[5][4].setColPlayer("vert");
+    System.out.println(p.grilleDeJeu[5][4].colPlayer);
+    p.avancerCase(5, 4, "vert" , "bas");
+    System.out.println(p.grilleDeJeu[5][4].colPlayer);
+    System.out.println(p.grilleDeJeu[6][4]);
+    System.out.println(p.grilleDeJeu[6][4].colPlayer);
+    
+    
     }
     
 }
