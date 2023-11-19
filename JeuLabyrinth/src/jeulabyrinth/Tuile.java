@@ -185,8 +185,8 @@ public class Tuile {
     public String DessinHautBas(int nLigne){
         String c1 = "////     ////";
         String c2 = "////     ////";
-        String c3 = "////  " + ObjetTuile() + "  ////";
-        String c4 = "////     ////";
+        String c3 = "//// " + ColorPlayerRouge() + ObjetTuile() + ColorPlayerVert() +  " ////";
+        String c4 = "//// " + ColorPlayerBleu() +  " " + ColorPlayerJaune() + " ////";
         String c5 = "////     ////";
         String c6 = "////     ////";
         
@@ -209,8 +209,8 @@ public class Tuile {
     public String DessinDroiteGauche(int nLigne){
         String c1 = "/////////////";
         String c2 = "/////////////";
-        String c3 = "      " + ObjetTuile() + "      ";
-        String c4 = "             ";
+        String c3 = "     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() +"     ";
+        String c4 = "     " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
         String c5 = "/////////////";
         String c6 = "/////////////";
         
@@ -233,8 +233,8 @@ public class Tuile {
     public String DessinHautDroite(int nLigne){
         String c1 = "////     ////";
         String c2 = "////     ////";
-        String c3 = "////  " + ObjetTuile() + "      ";
-        String c4 = "////         ";
+        String c3 = "//// " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
+        String c4 = "//// " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
         String c5 = "/////////////";
         String c6 = "/////////////";
         
@@ -257,8 +257,8 @@ public class Tuile {
     public String DessinDroiteBas(int nLigne){
         String c1 ="/////////////";
         String c2 ="/////////////";
-        String c3 ="////         ";
-        String c4 ="////  " + ObjetTuile() + "      ";
+        String c3 ="//// " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
+        String c4 ="//// " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
         String c5 ="////     ////";
         String c6 ="////     ////";
         
@@ -281,8 +281,8 @@ public class Tuile {
     public String DessinBasGauche(int nLigne){
         String c1 ="/////////////";
         String c2 ="/////////////";
-        String c3 ="         ////";
-        String c4 ="      " + ObjetTuile() + "  ////";
+        String c3 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + " ////";
+        String c4 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + " ////";
         String c5 ="////     ////";
         String c6 ="////     ////";
         
@@ -305,8 +305,8 @@ public class Tuile {
     public String DessinHautGauche(int nLigne){
         String c1 ="////     ////";
         String c2 ="////     ////";
-        String c3 ="     " + ObjetTuile() + "   ////";
-        String c4 ="         ////";
+        String c3 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + " ////";
+        String c4 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + " ////";
         String c5 ="/////////////";
         String c6 ="/////////////";
         
@@ -329,8 +329,8 @@ public class Tuile {
     public String DessinHautDroiteGauche(int nLigne){
         String c1 ="////     ////";
         String c2 ="////     ////";
-        String c3 ="             ";
-        String c4 ="      " + ObjetTuile() + "      ";
+        String c3 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
+        String c4 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
         String c5 ="/////////////";
         String c6 ="/////////////";
         
@@ -353,8 +353,8 @@ public class Tuile {
     public String DessinDroiteBasGauche(int nLigne){
         String c1 ="/////////////";
         String c2 ="/////////////";
-        String c3 ="      " + ObjetTuile() + "      ";
-        String c4 ="             ";
+        String c3 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
+        String c4 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
         String c5 ="////     ////";
         String c6 ="////     ////";
         
@@ -377,8 +377,8 @@ public class Tuile {
     public String DessinHautBasGauche(int nLigne){
         String c1 ="////     ////";
         String c2 ="////     ////";
-        String c3 ="      " + ObjetTuile() + "  ////";
-        String c4 ="         ////";
+        String c3 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + " ////";
+        String c4 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + " ////";
         String c5 ="////     ////";
         String c6 ="////     ////";
         
@@ -401,8 +401,8 @@ public class Tuile {
     public String DessinHautDroiteBas(int nLigne){
         String c1 ="////     ////";
         String c2 ="////     ////";
-        String c3 ="////  " + ObjetTuile() + "      ";
-        String c4 ="////         ";
+        String c3 ="//// " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
+        String c4 ="//// " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
         String c5 ="////     ////";
         String c6 ="////     ////";
         
@@ -480,6 +480,43 @@ public class Tuile {
             return ANSI_YELLOW + "s" + ANSI_RESET;
         } else if(object=="tresor"){
             return ANSI_PURPLE + "t" + ANSI_RESET;
+        } else {
+            return " ";
+        }
+    }
+    
+    // methode qui affiche la couleur du joueur
+    // bleu
+    public String ColorPlayerBleu(){
+        if (colPlayer=="bleu"){
+            return ANSI_BLUE + "X" + ANSI_RESET;
+        } else {
+            return " ";
+        }
+    }
+    
+    //vert
+    public String ColorPlayerVert(){
+        if (colPlayer=="vert"){
+            return ANSI_GREEN + "X" + ANSI_RESET;
+        } else {
+            return " ";
+        }
+    }
+    
+    //jaune
+    public String ColorPlayerJaune(){
+        if (colPlayer=="jaune"){
+            return ANSI_BLUE + "X" + ANSI_RESET;
+        } else {
+            return " ";
+        }
+    }
+    
+    //rouge
+    public String ColorPlayerRouge(){
+        if (colPlayer=="rouge"){
+            return ANSI_RED + "X" + ANSI_RESET;
         } else {
             return " ";
         }
