@@ -24,6 +24,9 @@ public class Tuile {
     boolean onBoard = true;
     // attribut qui indique la couleur du joueur sur la tuile, s'il y a un joueur
     String colPlayer = null;
+    
+    String ANSI_RESET = "\u001B[0m";
+    String ANSI_RED = "\u001B[31m";
 
     
     
@@ -142,7 +145,7 @@ public class Tuile {
             return DessinHautBas(nLigne);}
         // droite gauche
         else if (directions.equals(Arrays.asList("droite", "gauche")) || directions.equals(Arrays.asList("gauche", "droite"))) {
-            return DessinHautBas(nLigne);}
+            return DessinDroiteGauche(nLigne);}
         // haut droite
         else if (directions.equals(Arrays.asList("haut", "droite")) || directions.equals(Arrays.asList("droite", "haut"))) {
             return DessinHautDroite(nLigne);}
@@ -175,12 +178,12 @@ public class Tuile {
     
     //dessine un chemin vertical
     public String DessinHautBas(int nLigne){
-        String c1 ="////     ////";
-        String c2 ="////     ////";
-        String c3 ="////     ////";
-        String c4 ="////     ////";
-        String c5 ="////     ////";
-        String c6 ="////     ////";
+        String c1 = "////     ////";
+        String c2 = "////     ////";
+        String c3 = "////     ////";
+        String c4 = "////     ////";
+        String c5 = "////     ////";
+        String c6 = "////     ////";
         
         if (nLigne == 1){
             return c1;
@@ -199,12 +202,12 @@ public class Tuile {
     
     //dessine un chemin horizontal
     public String DessinDroiteGauche(int nLigne){
-        String c1 ="/////////////";
-        String c2 ="/////////////";
-        String c3 ="             ";
-        String c4 ="             ";
-        String c5 ="/////////////";
-        String c6 ="/////////////";
+        String c1 = "/////////////";
+        String c2 = "/////////////";
+        String c3 = "             ";
+        String c4 = "             ";
+        String c5 = "/////////////";
+        String c6 = "/////////////";
         
         if (nLigne == 1){
             return c1;
@@ -223,12 +226,12 @@ public class Tuile {
     
     //dessine un corner "haut" et "droite"
     public String DessinHautDroite(int nLigne){
-        String c1 ="////     ////";
-        String c2 ="////     ////";
-        String c3 ="////         ";
-        String c4 ="////         ";
-        String c5 ="/////////////";
-        String c6 ="/////////////";
+        String c1 = "////     ////";
+        String c2 = "////     ////";
+        String c3 = "////         ";
+        String c4 = "////         ";
+        String c5 = "/////////////";
+        String c6 = "/////////////";
         
         if (nLigne == 1){
             return c1;
@@ -415,3 +418,8 @@ public class Tuile {
     
     
 }
+
+
+
+
+

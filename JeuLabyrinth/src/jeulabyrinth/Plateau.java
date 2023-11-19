@@ -22,6 +22,9 @@ public class Plateau {
     // attribut tuileCourante, qui contient la tuile qui n'est pas sur le plateau
     Tuile tuileCourante;
     
+    String ANSI_RESET = "\u001B[0m";
+    String ANSI_RED = "\u001B[31m";
+    
     
     public Plateau() {
         ajoutTuilesDeJeu();
@@ -344,10 +347,32 @@ public class Plateau {
             }      
         }
     }
+
     
-    
-    
- 
-    
-    
+    public String afficherGrilleDeJeu() {
+        String c="";
+        
+        
+        for (int i=1; i<8 ; i++){
+            for (int k=1; k<7 ; k++){
+                
+                for (int j=1 ; j<8 ; j++){
+                
+                    c+= grilleDeJeu[i-1][j-1].DessinTuile(k);
+                    if (j<7){
+                        c+= ANSI_RED + "|" + ANSI_RESET;
+                    }
+                    if (j==7) {
+                        c+= "\n";
+                    }
+                    
+                }
+            }
+            if (i<7){
+            c+= ANSI_RED + "-------------------------------------------------------------------------------------------------\n" + ANSI_RESET;
+            }
+        }
+        return c;
+    }
+   
 }
