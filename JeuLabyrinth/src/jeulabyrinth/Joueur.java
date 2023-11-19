@@ -10,4 +10,8 @@ package jeulabyrinth;
  */
 public class Joueur {
     
+    
+    
+    
+    
 }
