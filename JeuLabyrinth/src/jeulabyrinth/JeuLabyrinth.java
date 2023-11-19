@@ -28,13 +28,10 @@ public class JeuLabyrinth {
     System.out.println(p.afficherGrilleDeJeu());
     
     while (i==0) {
-        System.out.println("Sur quelle ligne etes vous ?");
-        int nli = sc.nextInt();
-        System.out.println("Sur quelle colonne etes vous ?");
-        int nco = sc.nextInt();
+        
         System.out.println("Dans quelle directions voulez vous avancer ?");
         String rep = sc.next();
-        p.avancerCase(nli, nco, "bleu", rep);
+        p.avancerCase("bleu", rep);
         System.out.println(p.afficherGrilleDeJeu());
     }
     
