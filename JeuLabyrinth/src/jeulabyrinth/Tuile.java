@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Tuile {
     
     // attribut direction qui est une ArrayList, qui comporte toutes les directions que le joueur peut emprunter
-    ArrayList<String> directions = new ArrayList<String>(); 
+    ArrayList<String> directions; 
     // attribut object qui est un String, indique quel objet est present sur la tuile, indique null si aucun objet est present
     String object;
     // attribut nom qui est un String, qui indique ce que represente la case (objet, chemin, corner)
@@ -33,7 +33,7 @@ public class Tuile {
      * @param onBoard attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
      */
     public Tuile(String object, String name) {
-        this.directions = new ArrayList<>();
+        this.directions = new ArrayList<String>();
         this.object = object;
         this.name = name;
        

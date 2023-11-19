@@ -21,21 +21,21 @@ public class Carte {
     }
     
     
-    public String[] DicoObjets(){
+    public String[] DicoCartesObjets(){
         // dictionnaire
-        String[] DicoObjets = {"araignee","bague","bourse","carteTresor","chandelier",
+        String[] DicoCartesObjets = {"araignee","bague","bourse","carteTresor","chandelier",
                                "chauveSouris","chouette","cle","couronne","crane","dragon",
                                "epee","fantome","fee","genie","gobelin", "heaume","lezard",
                                "livre","papillon","rat","saphir","scarabee","tresor"};
-        return DicoObjets;
+        return DicoCartesObjets;
     }
      
     
     // complete l'arrayList avec toutes les cartes objets
     public void creerListeCarte() {
-        String[] DicoObjets = DicoObjets();
-        for (int i=0 ; i<DicoObjets.length ; i++) {
-            cartesObjet.add(DicoObjets[i]);
+        String[] DicoCartesObjets = DicoCartesObjets();
+        for (int i=0 ; i<DicoCartesObjets.length ; i++) {
+            cartesObjet.add(DicoCartesObjets[i]);
         }
     }
      
