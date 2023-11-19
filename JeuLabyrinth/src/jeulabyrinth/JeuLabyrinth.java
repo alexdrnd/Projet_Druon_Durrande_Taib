@@ -21,10 +21,7 @@ public class JeuLabyrinth {
     
     Plateau p = new Plateau();
     System.out.println(p.afficherGrilleDeJeu());
-    p.grilleDeJeu[0][1].tournerTuileSensHoraire();
-    System.out.println("\n\n\n\n");
-    System.out.println(p.afficherGrilleDeJeu());
-    
+    System.out.println(p.tuileCourante.getName());
     }
     
 }

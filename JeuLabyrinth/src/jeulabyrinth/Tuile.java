@@ -27,6 +27,11 @@ public class Tuile {
     
     String ANSI_RESET = "\u001B[0m";
     String ANSI_RED = "\u001B[31m";
+    String ANSI_GREEN = "\u001B[32m";
+    String ANSI_YELLOW = "\u001B[33m";
+    String ANSI_BLUE = "\u001B[34m";
+    String ANSI_PURPLE = "\u001B[35m";
+    String ANSI_CYAN = "\u001B[36m";
 
     
     
@@ -180,7 +185,7 @@ public class Tuile {
     public String DessinHautBas(int nLigne){
         String c1 = "////     ////";
         String c2 = "////     ////";
-        String c3 = "////     ////";
+        String c3 = "////  " + ObjetTuile() + "  ////";
         String c4 = "////     ////";
         String c5 = "////     ////";
         String c6 = "////     ////";
@@ -204,7 +209,7 @@ public class Tuile {
     public String DessinDroiteGauche(int nLigne){
         String c1 = "/////////////";
         String c2 = "/////////////";
-        String c3 = "             ";
+        String c3 = "      " + ObjetTuile() + "      ";
         String c4 = "             ";
         String c5 = "/////////////";
         String c6 = "/////////////";
@@ -228,7 +233,7 @@ public class Tuile {
     public String DessinHautDroite(int nLigne){
         String c1 = "////     ////";
         String c2 = "////     ////";
-        String c3 = "////         ";
+        String c3 = "////  " + ObjetTuile() + "      ";
         String c4 = "////         ";
         String c5 = "/////////////";
         String c6 = "/////////////";
@@ -253,7 +258,7 @@ public class Tuile {
         String c1 ="/////////////";
         String c2 ="/////////////";
         String c3 ="////         ";
-        String c4 ="////         ";
+        String c4 ="////  " + ObjetTuile() + "      ";
         String c5 ="////     ////";
         String c6 ="////     ////";
         
@@ -277,7 +282,7 @@ public class Tuile {
         String c1 ="/////////////";
         String c2 ="/////////////";
         String c3 ="         ////";
-        String c4 ="         ////";
+        String c4 ="      " + ObjetTuile() + "  ////";
         String c5 ="////     ////";
         String c6 ="////     ////";
         
@@ -300,7 +305,7 @@ public class Tuile {
     public String DessinHautGauche(int nLigne){
         String c1 ="////     ////";
         String c2 ="////     ////";
-        String c3 ="         ////";
+        String c3 ="     " + ObjetTuile() + "   ////";
         String c4 ="         ////";
         String c5 ="/////////////";
         String c6 ="/////////////";
@@ -325,7 +330,7 @@ public class Tuile {
         String c1 ="////     ////";
         String c2 ="////     ////";
         String c3 ="             ";
-        String c4 ="             ";
+        String c4 ="      " + ObjetTuile() + "      ";
         String c5 ="/////////////";
         String c6 ="/////////////";
         
@@ -348,7 +353,7 @@ public class Tuile {
     public String DessinDroiteBasGauche(int nLigne){
         String c1 ="/////////////";
         String c2 ="/////////////";
-        String c3 ="             ";
+        String c3 ="      " + ObjetTuile() + "      ";
         String c4 ="             ";
         String c5 ="////     ////";
         String c6 ="////     ////";
@@ -372,7 +377,7 @@ public class Tuile {
     public String DessinHautBasGauche(int nLigne){
         String c1 ="////     ////";
         String c2 ="////     ////";
-        String c3 ="         ////";
+        String c3 ="      " + ObjetTuile() + "  ////";
         String c4 ="         ////";
         String c5 ="////     ////";
         String c6 ="////     ////";
@@ -396,7 +401,7 @@ public class Tuile {
     public String DessinHautDroiteBas(int nLigne){
         String c1 ="////     ////";
         String c2 ="////     ////";
-        String c3 ="////         ";
+        String c3 ="////  " + ObjetTuile() + "      ";
         String c4 ="////         ";
         String c5 ="////     ////";
         String c6 ="////     ////";
@@ -416,6 +421,69 @@ public class Tuile {
         }
     }
     
+    
+    //methode qui affiche l'objet de la tuile
+    public String ObjetTuile(){
+        if (object=="araignee"){
+            return ANSI_CYAN + "a" + ANSI_RESET;
+        } else if(object=="bague"){
+            return ANSI_GREEN + "b" + ANSI_RESET;
+        } else if(object=="bourse"){
+            return ANSI_PURPLE + "b" + ANSI_RESET;
+        } else if(object=="carteTresor"){
+            return ANSI_RED + "c" + ANSI_RESET;
+        } else if(object=="chandelier"){
+            return ANSI_YELLOW + "c" + ANSI_RESET;
+        } else if(object=="chauveSouris"){
+            return ANSI_BLUE + "c" + ANSI_RESET;
+        } else if(object=="chouette"){
+            return ANSI_CYAN + "c" + ANSI_RESET;
+        } else if(object=="cle"){
+            return ANSI_GREEN + "c" + ANSI_RESET;
+        } else if(object=="couronne"){
+            return ANSI_RED + "M" + ANSI_RESET;
+        } else if(object=="crane"){
+            return ANSI_PURPLE + "c" + ANSI_RESET;
+        } else if(object=="departB"){
+            return ANSI_BLUE + "D" + ANSI_RESET;
+        } else if(object=="departJ"){
+            return ANSI_YELLOW + "D" + ANSI_RESET;
+        } else if(object=="departR"){
+            return ANSI_RED + "D" + ANSI_RESET;
+        } else if(object=="departV"){
+            return ANSI_GREEN + "D" + ANSI_RESET;
+        } else if(object=="dragon"){
+            return ANSI_YELLOW + "d" + ANSI_RESET;
+        } else if(object=="epee"){
+            return ANSI_BLUE + "e" + ANSI_RESET;
+        } else if(object=="fantome"){
+            return ANSI_CYAN + "f" + ANSI_RESET;
+        } else if(object=="fee"){
+            return ANSI_GREEN + "f" + ANSI_RESET;
+        } else if(object=="genie"){
+            return ANSI_PURPLE + "g" + ANSI_RESET;
+        } else if(object=="gobelin"){
+            return ANSI_RED + "g" + ANSI_RESET;
+        } else if(object=="heaume"){
+            return ANSI_YELLOW + "h" + ANSI_RESET;
+        } else if(object=="lezard"){
+            return ANSI_BLUE + "l" + ANSI_RESET;
+        } else if(object=="livre"){
+            return ANSI_CYAN + "l" + ANSI_RESET;
+        } else if(object=="papillon"){
+            return ANSI_GREEN + "p" + ANSI_RESET;
+        } else if(object=="rat"){
+            return ANSI_PURPLE + "r" + ANSI_RESET;
+        } else if(object=="saphir"){
+            return ANSI_RED + "s" + ANSI_RESET;
+        } else if(object=="scarabee"){
+            return ANSI_YELLOW + "s" + ANSI_RESET;
+        } else if(object=="tresor"){
+            return ANSI_PURPLE + "t" + ANSI_RESET;
+        } else {
+            return " ";
+        }
+    }
     
 }
 
