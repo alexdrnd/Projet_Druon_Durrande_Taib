@@ -5,6 +5,7 @@
 package jeulabyrinth;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 
 /**
@@ -134,21 +135,283 @@ public class Tuile {
     
     
     
-    
-    @Override
-    public String toString() {
-        return name + "{" + "direction=" + directions + ", object=" + object + ", onBoard=" + onBoard + '}';
+    // methode qui dessine la tuille en fonction des directions qu'elle contient
+    public String DessinTuile(int nLigne){
+        // haut bas
+        if (directions.equals(Arrays.asList("haut", "bas")) || directions.equals(Arrays.asList("bas", "haut"))) {
+            return DessinHautBas(nLigne);}
+        // droite gauche
+        else if (directions.equals(Arrays.asList("droite", "gauche")) || directions.equals(Arrays.asList("gauche", "droite"))) {
+            return DessinHautBas(nLigne);}
+        // haut droite
+        else if (directions.equals(Arrays.asList("haut", "droite")) || directions.equals(Arrays.asList("droite", "haut"))) {
+            return DessinHautDroite(nLigne);}
+        // droite bas
+        else if (directions.equals(Arrays.asList("droite", "bas")) || directions.equals(Arrays.asList("bas", "droite"))) {
+            return DessinDroiteBas(nLigne);}
+        // bas gauche
+        else if (directions.equals(Arrays.asList("bas", "gauche")) || directions.equals(Arrays.asList("gauche", "bas"))) {
+            return DessinBasGauche(nLigne);}
+        // haut gauche
+        else if (directions.equals(Arrays.asList("haut", "gauche")) || directions.equals(Arrays.asList("gauche", "haut"))) {
+            return DessinHautGauche(nLigne);}
+        // haut droite gauche
+        else if (directions.equals(Arrays.asList("haut", "droite", "gauche")) || directions.equals(Arrays.asList("haut", "gauche", "droite")) || directions.equals(Arrays.asList("droite", "haut", "gauche")) || directions.equals(Arrays.asList("droite", "gauche", "haut")) || directions.equals(Arrays.asList("gauche", "haut", "droite")) || directions.equals(Arrays.asList("gauche", "droite", "haut"))) {
+            return DessinHautDroiteGauche(nLigne);}
+        // droite bas gauche
+        else if (directions.equals(Arrays.asList("droite", "bas", "gauche")) || directions.equals(Arrays.asList("droite", "gauche", "bas")) || directions.equals(Arrays.asList("bas", "droite", "gauche")) || directions.equals(Arrays.asList("bas", "gauche", "droite")) || directions.equals(Arrays.asList("gauche", "droite", "bas")) || directions.equals(Arrays.asList("gauche", "bas", "droite"))) {
+            return DessinDroiteBasGauche(nLigne);}
+        // haut bas gauche
+        else if (directions.equals(Arrays.asList("haut", "bas", "gauche")) || directions.equals(Arrays.asList("haut", "gauche", "bas")) || directions.equals(Arrays.asList("bas", "haut", "gauche")) || directions.equals(Arrays.asList("bas", "gauche", "haut")) || directions.equals(Arrays.asList("gauche", "haut", "bas")) || directions.equals(Arrays.asList("gauche", "bas", "haut"))) {
+            return DessinHautBasGauche(nLigne);}
+        // haut droite bas
+        else {
+            return DessinHautDroiteBas(nLigne);}
+        
     }
     
     
     
     
+    //dessine un chemin vertical
+    public String DessinHautBas(int nLigne){
+        String c1 ="////     ////";
+        String c2 ="////     ////";
+        String c3 ="////     ////";
+        String c4 ="////     ////";
+        String c5 ="////     ////";
+        String c6 ="////     ////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
     
+    //dessine un chemin horizontal
+    public String DessinDroiteGauche(int nLigne){
+        String c1 ="/////////////";
+        String c2 ="/////////////";
+        String c3 ="             ";
+        String c4 ="             ";
+        String c5 ="/////////////";
+        String c6 ="/////////////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
     
+    //dessine un corner "haut" et "droite"
+    public String DessinHautDroite(int nLigne){
+        String c1 ="////     ////";
+        String c2 ="////     ////";
+        String c3 ="////         ";
+        String c4 ="////         ";
+        String c5 ="/////////////";
+        String c6 ="/////////////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
     
+    //dessine un corner "droite" et "bas"
+    public String DessinDroiteBas(int nLigne){
+        String c1 ="/////////////";
+        String c2 ="/////////////";
+        String c3 ="////         ";
+        String c4 ="////         ";
+        String c5 ="////     ////";
+        String c6 ="////     ////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
     
+    //dessine un corner "bas" et "gauche"
+    public String DessinBasGauche(int nLigne){
+        String c1 ="/////////////";
+        String c2 ="/////////////";
+        String c3 ="         ////";
+        String c4 ="         ////";
+        String c5 ="////     ////";
+        String c6 ="////     ////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
     
+    //dessine un corner "gauche" et "haut"
+    public String DessinHautGauche(int nLigne){
+        String c1 ="////     ////";
+        String c2 ="////     ////";
+        String c3 ="         ////";
+        String c4 ="         ////";
+        String c5 ="/////////////";
+        String c6 ="/////////////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
     
+    //dessine un T "haut" "droite" et "gauche"
+    public String DessinHautDroiteGauche(int nLigne){
+        String c1 ="////     ////";
+        String c2 ="////     ////";
+        String c3 ="             ";
+        String c4 ="             ";
+        String c5 ="/////////////";
+        String c6 ="/////////////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
+    
+    //dessine un T "droite" "bas" et "gauche"
+    public String DessinDroiteBasGauche(int nLigne){
+        String c1 ="/////////////";
+        String c2 ="/////////////";
+        String c3 ="             ";
+        String c4 ="             ";
+        String c5 ="////     ////";
+        String c6 ="////     ////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
+    
+    //dessine un T "haut" "bas" et "gauche"
+    public String DessinHautBasGauche(int nLigne){
+        String c1 ="////     ////";
+        String c2 ="////     ////";
+        String c3 ="         ////";
+        String c4 ="         ////";
+        String c5 ="////     ////";
+        String c6 ="////     ////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
+    
+    //dessine un T "haut" "droite" et "bas"
+    public String DessinHautDroiteBas(int nLigne){
+        String c1 ="////     ////";
+        String c2 ="////     ////";
+        String c3 ="////         ";
+        String c4 ="////         ";
+        String c5 ="////     ////";
+        String c6 ="////     ////";
+        
+        if (nLigne == 1){
+            return c1;
+        } else if (nLigne==2){
+            return c2;
+        } else if (nLigne==3){
+            return c3;
+        }else if (nLigne==4){
+            return c4;
+        }else if (nLigne==5){
+            return c5;
+        }else {
+            return c6;
+        }
+    }
     
     
 }
