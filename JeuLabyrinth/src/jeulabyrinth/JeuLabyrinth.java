@@ -19,9 +19,9 @@ public class JeuLabyrinth {
     public static void main(String[] args) {
         // TODO code application logic here
     
-    Carte c = new Carte();
-    System.out.println(c.cartesObjet);
-    
+    Plateau p = new Plateau();
+    System.out.println(p.tuileCourante);
+    System.out.println(p.TuilesDeJeu);
     
     }
     
