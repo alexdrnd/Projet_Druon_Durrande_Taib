@@ -507,7 +507,7 @@ public class Tuile {
     //jaune
     public String ColorPlayerJaune(){
         if (colPlayer=="jaune"){
-            return ANSI_BLUE + "X" + ANSI_RESET;
+            return ANSI_YELLOW + "X" + ANSI_RESET;
         } else {
             return " ";
         }

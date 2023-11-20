@@ -19,22 +19,9 @@ public class JeuLabyrinth {
     public static void main(String[] args) {
         // TODO code application logic here
     
+     Partie p = new Partie();  
         
-        
-    Plateau p = new Plateau();
-    int i=0;
-    Scanner sc = new Scanner(System.in);
-    p.grilleDeJeu[0][0].setColPlayer("bleu");
-    System.out.println(p.afficherGrilleDeJeu());
-    
-    while (i==0) {
-        
-        System.out.println("Dans quelle directions voulez vous avancer ?");
-        String rep = sc.next();
-        p.avancerCase("bleu", rep);
-        System.out.println(p.afficherGrilleDeJeu());
-    }
-    
+     
     }
     
 }

@@ -160,6 +160,7 @@ public class Plateau {
         }
         
         tuileCourante = TuilesDeJeu.get(0);
+        TuilesDeJeu.remove(0);
         tuileCourante.setOnBoard(false);
         return grille;
     }
@@ -386,7 +387,24 @@ public class Plateau {
                 c+= ANSI_RED + "--------------------------------------------------------------------------------------------------\n" + ANSI_RESET;
             }
         }
+        
+        c+="\n\n\n" + afficherTuileCourante();
+        
         return c;
     }
    
+    
+    // affiche la tuille courante
+    public String afficherTuileCourante(){
+        String c="";
+        for (int k = 1 ; k<7 ; k++){
+            c+=tuileCourante.DessinTuile(k);
+            c+="\n";
+        }
+        return c;
+    }
+    
+    
+    
 }
+

@@ -12,10 +12,10 @@ import java.util.ArrayList;
  */
 public class Joueur {
     
-    // liste de carte à recolté du joeur
+    // liste de carte à recolter du joueur
     ArrayList<String> CartesJoueurs;
     // couleur du joueur
-    String color;
+    String couleur;
     //nom du joueur
     String nom;
     
@@ -27,8 +27,26 @@ public class Joueur {
     }
     
     public void affecterCouleur(String color) {
-        color = color;
+        couleur = color;
     }
+    
+    public String lireCouleur() {
+        return couleur;
+    }
+    
+    public void recolterObjet(){
+        CartesJoueurs.remove(0);
+    }
+    
+    //methode qui verifie si le joueur à gagner, cad s'il n'a plus d'objet à recuperer
+    public boolean Victoire(){
+        if (CartesJoueurs.size()==0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     
     
     
