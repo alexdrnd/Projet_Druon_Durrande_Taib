@@ -149,11 +149,11 @@ public class Partie {
             // demander au joueur s'il veut tourner la tuile ou la placer sur la grille
             tournerOuPlacerTuile();
             //demander au joueur d'avancer
-            
+            avancerCase();
             //verifier si le joueur recupere un objet et le retirer de sa liste
             
             //passer au joueur suivant
-            
+            changerJoueurCourant();
         }
         
     }
@@ -225,6 +225,35 @@ public class Partie {
         System.out.println(plateau.afficherGrilleDeJeu());
         
         
+    }
+    
+    //methode qui demande au joueur d'avancer
+    public void avancerCase(){
+        String direction = "";
+        while (!direction.equals("ok")){
+            do {
+                System.out.println("Dans quelle direction voulez vous avancer ? (haut, droite, bas ,gauche)");
+                System.out.println("Tapez 'h' ou 'd' ou 'b' ou'g'");
+                System.out.println("Si vous voulez arreter d'avancer, tapez 'ok'");
+                direction = sc.next();
+            } while(!direction.equals("h") && !direction.equals("d") && !direction.equals("b") && !direction.equals("g") && !direction.equals("ok"));
+            if (!direction.equals("ok")){
+                
+                if (direction.equals("h")){
+                    direction="haut";
+                } else if (direction.equals("d")){
+                    direction="droite";
+                } else if (direction.equals("b")){
+                    direction="bas";
+                } else if (direction.equals("g")){
+                    direction="gauche";
+                }
+                
+                System.out.println(direction);
+                plateau.avancerCase(joueurCourant.lireCouleur(), direction);
+                System.out.println(plateau.afficherGrilleDeJeu());
+            }
+        }   
     }
     
     
