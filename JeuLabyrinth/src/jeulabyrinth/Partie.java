@@ -146,15 +146,19 @@ public class Partie {
         
         // tant qu'aucun joueur n'a gagne, la partie se profile de la meme maniere :
         while (leJeuContinu()){
+            System.out.println(joueurCourant.getNom() + ", c'est a vous de jouer. Vous etes le joueur " + joueurCourant.lireCouleur());
+            System.out.println("Vous devez collecter l'objet " + joueurCourant.CartesJoueurs.get(0) + ". Il vous reste " + joueurCourant.CartesJoueurs.size() + " objets a recolter.");
             // demander au joueur s'il veut tourner la tuile ou la placer sur la grille
             tournerOuPlacerTuile();
             //demander au joueur d'avancer
             avancerCase();
             //verifier si le joueur recupere un objet et le retirer de sa liste
-            
+            recolterObjet();
             //passer au joueur suivant
             changerJoueurCourant();
         }
+        
+        System.out.println("Felicitation " + joueurCourant.getNom() + ", vous avez gagne !");
         
     }
     
@@ -256,6 +260,24 @@ public class Partie {
         }   
     }
     
+    //methode qui recolte l'objet du joueur 
+    public void recolterObjet(){
+        //obtenir la position du joueur
+        for (int i = 0 ; i<7 ; i++){
+            for (int j=0 ; j<7 ; j++){
+                if(plateau.grilleDeJeu[i][j].colPlayer != null && plateau.grilleDeJeu[i][j].colPlayer.equals(joueurCourant.lireCouleur())){
+                    Tuile t = plateau.grilleDeJeu[i][j];
+                    // verifier si la tuile contient l'objet que le joueur doit recolter
+                    if (t.getObject() != null && t.getObject().equals(joueurCourant.CartesJoueurs.get(0))){
+                        joueurCourant.recolterObjet();
+                        System.out.println("Objet recolte\n");
+                    }
+                }
+            }
+        }
+        
+        
+    }
     
     
     

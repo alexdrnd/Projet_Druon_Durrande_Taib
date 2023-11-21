@@ -110,7 +110,7 @@ public class Plateau {
     
     // methode pour creer une tuile de type "chemin"
     public Tuile creerTuileChemin(){
-        Tuile tuile = new Tuile(null, "chemin");
+        Tuile tuile = new Tuile(" ", "chemin");
         tuile.ajouterDirection("haut");
         tuile.ajouterDirection("bas");
         return tuile;
@@ -118,7 +118,7 @@ public class Plateau {
     
     // methode pour creer une tuile de type "corner"
     public Tuile creerTuileCorner(){
-        Tuile tuile = new Tuile(null, "corner");
+        Tuile tuile = new Tuile(" ", "corner");
         tuile.ajouterDirection("droite");
         tuile.ajouterDirection("bas");
         return tuile;
@@ -403,6 +403,8 @@ public class Plateau {
         }
         return c;
     }
+    
+    
     
     
     

@@ -23,7 +23,7 @@ public class Tuile {
     // attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
     boolean onBoard = true;
     // attribut qui indique la couleur du joueur sur la tuile, s'il y a un joueur
-    String colPlayer = null;
+    String colPlayer = " ";
     
     String ANSI_RESET = "\u001B[0m";
     String ANSI_RED = "\u001B[31m";
@@ -45,6 +45,8 @@ public class Tuile {
         this.directions = new ArrayList<String>();
         this.object = object;
         this.name = name;
+        this.colPlayer = " ";
+        this.object = ObjetTuile();
        
     }
     
@@ -185,7 +187,7 @@ public class Tuile {
     public String DessinHautBas(int nLigne){
         String c1 = "////     ////";
         String c2 = "////     ////";
-        String c3 = "//// " + ColorPlayerRouge() + ObjetTuile() + ColorPlayerVert() +  " ////";
+        String c3 = "//// " + ColorPlayerRouge() + object + ColorPlayerVert() +  " ////";
         String c4 = "//// " + ColorPlayerBleu() +  " " + ColorPlayerJaune() + " ////";
         String c5 = "////     ////";
         String c6 = "////     ////";
@@ -209,7 +211,7 @@ public class Tuile {
     public String DessinDroiteGauche(int nLigne){
         String c1 = "/////////////";
         String c2 = "/////////////";
-        String c3 = "     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() +"     ";
+        String c3 = "     " + ColorPlayerBleu() + object + ColorPlayerJaune() +"     ";
         String c4 = "     " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
         String c5 = "/////////////";
         String c6 = "/////////////";
@@ -233,7 +235,7 @@ public class Tuile {
     public String DessinHautDroite(int nLigne){
         String c1 = "////     ////";
         String c2 = "////     ////";
-        String c3 = "//// " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
+        String c3 = "//// " + ColorPlayerBleu() + object + ColorPlayerJaune() + "     ";
         String c4 = "//// " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
         String c5 = "/////////////";
         String c6 = "/////////////";
@@ -258,7 +260,7 @@ public class Tuile {
         String c1 ="/////////////";
         String c2 ="/////////////";
         String c3 ="//// " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
-        String c4 ="//// " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
+        String c4 ="//// " + ColorPlayerBleu() + object + ColorPlayerJaune() + "     ";
         String c5 ="////     ////";
         String c6 ="////     ////";
         
@@ -282,7 +284,7 @@ public class Tuile {
         String c1 ="/////////////";
         String c2 ="/////////////";
         String c3 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + " ////";
-        String c4 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + " ////";
+        String c4 ="     " + ColorPlayerBleu() + object + ColorPlayerJaune() + " ////";
         String c5 ="////     ////";
         String c6 ="////     ////";
         
@@ -306,7 +308,7 @@ public class Tuile {
         String c1 ="////     ////";
         String c2 ="////     ////";
         String c3 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + " ////";
-        String c4 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + " ////";
+        String c4 ="     " + ColorPlayerBleu() + object + ColorPlayerJaune() + " ////";
         String c5 ="/////////////";
         String c6 ="/////////////";
         
@@ -330,7 +332,7 @@ public class Tuile {
         String c1 ="////     ////";
         String c2 ="////     ////";
         String c3 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
-        String c4 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
+        String c4 ="     " + ColorPlayerBleu() + object + ColorPlayerJaune() + "     ";
         String c5 ="/////////////";
         String c6 ="/////////////";
         
@@ -353,7 +355,7 @@ public class Tuile {
     public String DessinDroiteBasGauche(int nLigne){
         String c1 ="/////////////";
         String c2 ="/////////////";
-        String c3 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
+        String c3 ="     " + ColorPlayerBleu() + object + ColorPlayerJaune() + "     ";
         String c4 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
         String c5 ="////     ////";
         String c6 ="////     ////";
@@ -377,7 +379,7 @@ public class Tuile {
     public String DessinHautBasGauche(int nLigne){
         String c1 ="////     ////";
         String c2 ="////     ////";
-        String c3 ="     " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + " ////";
+        String c3 ="     " + ColorPlayerBleu() + object + ColorPlayerJaune() + " ////";
         String c4 ="     " + ColorPlayerRouge() + " " + ColorPlayerVert() + " ////";
         String c5 ="////     ////";
         String c6 ="////     ////";
@@ -401,7 +403,7 @@ public class Tuile {
     public String DessinHautDroiteBas(int nLigne){
         String c1 ="////     ////";
         String c2 ="////     ////";
-        String c3 ="//// " + ColorPlayerBleu() + ObjetTuile() + ColorPlayerJaune() + "     ";
+        String c3 ="//// " + ColorPlayerBleu() + object + ColorPlayerJaune() + "     ";
         String c4 ="//// " + ColorPlayerRouge() + " " + ColorPlayerVert() + "     ";
         String c5 ="////     ////";
         String c6 ="////     ////";

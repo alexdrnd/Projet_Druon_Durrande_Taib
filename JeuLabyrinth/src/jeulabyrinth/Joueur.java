@@ -18,8 +18,7 @@ public class Joueur {
     String couleur;
     //nom du joueur
     String nom;
-    
-    
+  
     
     public Joueur(String nom){
         CartesJoueurs = new ArrayList<String>();
@@ -28,6 +27,10 @@ public class Joueur {
     
     public void affecterCouleur(String color) {
         couleur = color;
+    }
+
+    public String getNom() {
+        return nom;
     }
     
     public String lireCouleur() {
