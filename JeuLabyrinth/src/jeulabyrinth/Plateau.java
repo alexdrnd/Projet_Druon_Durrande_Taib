@@ -310,18 +310,18 @@ public class Plateau {
     
     
     // methode qui avance le joueur sur la tuile suivant s'il peut y aller
-    public void avancerCase(String colPlayer, String direction) {
+    public void avancerCase(String colplayer, String direction) {
         int n=0;
         for (int i=0 ; i<7 ; i++){
             for (int j=0 ; j<7 ; j++){
-                if(grilleDeJeu[i][j].colPlayer==colPlayer){
+                if(grilleDeJeu[i][j].colPlayer.contains(colplayer)){
                     if (grilleDeJeu[i][j].getDirection().contains(direction)) {
                         switch (direction) {
                             case "haut" : 
                                 if (i>0) {
                                     if (grilleDeJeu[i-1][j].getDirection().contains("bas")) {
-                                        grilleDeJeu[i][j].setColPlayer(null);
-                                        grilleDeJeu[i-1][j].setColPlayer(colPlayer);
+                                        grilleDeJeu[i][j].colPlayer.remove(colplayer);
+                                        grilleDeJeu[i-1][j].setColPlayer(colplayer);
                                         n+=1;
                                         break;
                                     }break;
@@ -329,8 +329,8 @@ public class Plateau {
                             case "droite" : 
                                 if (j<6) {
                                     if (grilleDeJeu[i][j+1].getDirection().contains("gauche")) {
-                                        grilleDeJeu[i][j].setColPlayer(null);
-                                        grilleDeJeu[i][j+1].setColPlayer(colPlayer);
+                                        grilleDeJeu[i][j].colPlayer.remove(colplayer);
+                                        grilleDeJeu[i][j+1].setColPlayer(colplayer);
                                         n+=1;
                                         break;
                                     }break;
@@ -338,8 +338,8 @@ public class Plateau {
                             case "bas" : 
                                 if (i<6) {
                                     if (grilleDeJeu[i+1][j].getDirection().contains("haut")) {
-                                        grilleDeJeu[i][j].setColPlayer(null);
-                                        grilleDeJeu[i+1][j].setColPlayer(colPlayer);
+                                        grilleDeJeu[i][j].colPlayer.remove(colplayer);
+                                        grilleDeJeu[i+1][j].setColPlayer(colplayer);
                                         n+=1;
                                         break;
                                     }break;
@@ -347,8 +347,8 @@ public class Plateau {
                             case "gauche" : 
                                 if (j>0) {
                                     if (grilleDeJeu[i][j-1].getDirection().contains("droite")) {
-                                        grilleDeJeu[i][j].setColPlayer(null);
-                                        grilleDeJeu[i][j-1].setColPlayer(colPlayer);
+                                        grilleDeJeu[i][j].colPlayer.remove(colplayer);
+                                        grilleDeJeu[i][j-1].setColPlayer(colplayer);
                                         n+=1;
                                         break;
                                     }break;

@@ -22,6 +22,7 @@ public class Tuile {
     String name;
     // attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
     boolean onBoard = true;
+    
     // attribut qui indique la couleur du joueur sur la tuile, s'il y a un joueur
     ArrayList<String> colPlayer;
     

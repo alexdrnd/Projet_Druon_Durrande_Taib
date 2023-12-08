@@ -265,7 +265,7 @@ public class Partie {
         //obtenir la position du joueur
         for (int i = 0 ; i<7 ; i++){
             for (int j=0 ; j<7 ; j++){
-                if(plateau.grilleDeJeu[i][j].colPlayer != null && plateau.grilleDeJeu[i][j].colPlayer.equals(joueurCourant.lireCouleur())){
+                if(plateau.grilleDeJeu[i][j].colPlayer != null && plateau.grilleDeJeu[i][j].colPlayer.contains(joueurCourant.lireCouleur())){
                     Tuile t = plateau.grilleDeJeu[i][j];
                     // verifier si la tuile contient l'objet que le joueur doit recolter
                     if (t.getObject() != null && t.getObject().equals(joueurCourant.CartesJoueurs.get(0))){
