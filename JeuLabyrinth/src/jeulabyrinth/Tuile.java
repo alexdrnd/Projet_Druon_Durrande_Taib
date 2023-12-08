@@ -23,7 +23,7 @@ public class Tuile {
     // attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
     boolean onBoard = true;
     // attribut qui indique la couleur du joueur sur la tuile, s'il y a un joueur
-    String colPlayer = " ";
+    ArrayList<String> colPlayer;
     
     String ANSI_RESET = "\u001B[0m";
     String ANSI_RED = "\u001B[31m";
@@ -45,14 +45,14 @@ public class Tuile {
         this.directions = new ArrayList<String>();
         this.object = object;
         this.name = name;
-        this.colPlayer = " ";
+        this.colPlayer = new ArrayList();
         this.object = ObjetTuile();
        
     }
     
     
     
-    // M?thode pour ajouter une direction ? l'ArrayList direction
+    // Méthode pour ajouter une direction ? l'ArrayList direction
     public void ajouterDirection(String way) {
         directions.add(way);
     }
@@ -139,8 +139,8 @@ public class Tuile {
         this.onBoard = onBoard;
     }
 
-    public void setColPlayer(String colPlayer) {
-        this.colPlayer = colPlayer;
+    public void setColPlayer(String colplayer) {
+        colPlayer.add(colplayer);
     }
     
     
@@ -490,7 +490,7 @@ public class Tuile {
     // methode qui affiche la couleur du joueur
     // bleu
     public String ColorPlayerBleu(){
-        if (colPlayer=="bleu"){
+        if (colPlayer.contains("bleu")){
             return ANSI_BLUE + "X" + ANSI_RESET;
         } else {
             return " ";
@@ -499,7 +499,7 @@ public class Tuile {
     
     //vert
     public String ColorPlayerVert(){
-        if (colPlayer=="vert"){
+        if (colPlayer.contains("vert")){
             return ANSI_GREEN + "X" + ANSI_RESET;
         } else {
             return " ";
@@ -508,7 +508,7 @@ public class Tuile {
     
     //jaune
     public String ColorPlayerJaune(){
-        if (colPlayer=="jaune"){
+        if (colPlayer.contains("jaune")){
             return ANSI_YELLOW + "X" + ANSI_RESET;
         } else {
             return " ";
@@ -517,7 +517,7 @@ public class Tuile {
     
     //rouge
     public String ColorPlayerRouge(){
-        if (colPlayer=="rouge"){
+        if (colPlayer.contains("rouge")){
             return ANSI_RED + "X" + ANSI_RESET;
         } else {
             return " ";
