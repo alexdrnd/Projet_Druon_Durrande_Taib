@@ -22,9 +22,10 @@ public class Tuile {
     String name;
     // attribut onBoard qui est un booleen, indique si la tuile est sur le plateau ou non
     boolean onBoard = true;
-    
     // attribut qui indique la couleur du joueur sur la tuile, s'il y a un joueur
     ArrayList<String> colPlayer;
+    // attribut int qui indique à quel fichier l'image de la tuile appartient en fonction de son sens
+    int nImage = 1;
     
     String ANSI_RESET = "\u001B[0m";
     String ANSI_RED = "\u001B[31m";

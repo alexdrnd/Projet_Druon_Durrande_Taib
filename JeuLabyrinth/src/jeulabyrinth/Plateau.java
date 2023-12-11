@@ -32,7 +32,7 @@ public class Plateau {
     }
     
     
-    // methode qui cr?er et ajoute ? la liste TuilesDeJeu l'ensemble des tuiles du jeu
+    // methode qui créer et ajoute ? la liste TuilesDeJeu l'ensemble des tuiles du jeu
     public void ajoutTuilesDeJeu() {
         // ajouter les 24 tuiles "objet"
         String[][] DicoObjets = DicoObjets();
@@ -223,6 +223,10 @@ public class Plateau {
         
         // tourner un nombre aleatoire de fois cette tuile
         int nbTour = random.nextInt(1, 5);
+        t.nImage = nbTour+1;
+        if (t.nImage==5) {
+            t.nImage=1;
+        }
         for (int i=0 ; i<nbTour ; i++) {
             t.tournerTuileSensHoraire();
         }

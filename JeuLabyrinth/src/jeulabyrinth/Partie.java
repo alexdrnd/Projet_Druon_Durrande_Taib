@@ -16,7 +16,7 @@ public class Partie {
     
     private ArrayList<Joueur> listeJoueurs = new ArrayList<>();
     private Joueur joueurCourant;
-    private Plateau plateau;
+    public Plateau plateau;
     Random generateurAleat = new Random();
     Scanner sc = new Scanner(System.in);
 
