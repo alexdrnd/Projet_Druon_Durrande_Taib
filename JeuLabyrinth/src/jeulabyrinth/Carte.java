@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Carte {
     
     // liste qui comporte tous les objets que le joueur peut collecter
-    ArrayList<String> cartesObjet = new ArrayList<>();
+    ArrayList<String> cartesObjet;
     
     String ANSI_RESET = "\u001B[0m";
     String ANSI_RED = "\u001B[31m";

@@ -5,13 +5,18 @@
 package jeulabyrinth;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -22,8 +27,17 @@ import javax.swing.JLabel;
  */
 public class PartieGraphique extends javax.swing.JFrame {
 
-    Partie partieAssocié;
-    int nbJoueur = 0;
+    int nbJoueur = 2;
+    String nomJ1;
+    String nomJ2;
+    String nomJ3;
+    String nomJ4;
+    PlateauGraphique plateau;
+    private ArrayList<Joueur> listeJoueurs = new ArrayList<>();
+    Random generateurAleat = new Random();
+    ArrayList<String> listeDeCartes;
+    private Joueur joueurCourant;
+    
     
     
     
@@ -34,7 +48,8 @@ public class PartieGraphique extends javax.swing.JFrame {
     public PartieGraphique() {
         initComponents();
         creerArriereplan();
-        ajouterPanneauNomJoueur();
+        ajouterPanneauJoueur();
+        
     }
 
     
@@ -98,10 +113,7 @@ public class PartieGraphique extends javax.swing.JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 300, 0);
-        panneauJoueurs.add(boutonValider, gbc);
-        
-        
-        
+        panneauJoueurs.add(boutonValider, gbc);  
     }
     
     
@@ -118,39 +130,238 @@ public class PartieGraphique extends javax.swing.JFrame {
     public void placerElementsPanneauNomJoueurs(){
         panneauNomJoueurs.setLayout(new GridBagLayout());
         
-        // ajouter le label Combien de joueurs voulez vous ?
+        // ajouter le label NomJ1
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(0, 0, 500, 0);
+        gbc.insets = new Insets(0, 0, 500, 100);
         panneauNomJoueurs.add(LabelNomJ1, gbc);
         
         
-        // ajouter les boutons 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0, 0, 400, 0);
+        // NomJ2 
+        gbc.insets = new Insets(0, 0, 400, 100);
         panneauNomJoueurs.add(LabelNomJ2, gbc);
-         
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0, 0, 300, 0);
+        
+        gbc.insets = new Insets(0, 0, 300, 100);
         panneauNomJoueurs.add(LabelNomJ3, gbc);
         
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0, 0, 200, 0);
+        
+        gbc.insets = new Insets(0, 0, 200, 100);
         panneauNomJoueurs.add(LabelNomJ4, gbc);
         
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0, 0, 0, 0);
+        //ajouter les textFields
+        gbc.insets = new Insets(0, 300, 500, 0);
+        panneauNomJoueurs.add(NomJ1, gbc);
+        NomJ1.setPreferredSize(new Dimension(150, NomJ1.getPreferredSize().height));
+        
+        gbc.insets = new Insets(0, 300, 400, 0);
+        panneauNomJoueurs.add(NomJ2, gbc);
+        NomJ2.setPreferredSize(new Dimension(150, NomJ2.getPreferredSize().height));
+        
+        gbc.insets = new Insets(0, 300, 300, 0);
+        panneauNomJoueurs.add(NomJ3, gbc);
+        NomJ3.setPreferredSize(new Dimension(150, NomJ3.getPreferredSize().height));
+        
+        gbc.insets = new Insets(0, 300, 200, 0);
+        panneauNomJoueurs.add(NomJ4, gbc);
+        NomJ4.setPreferredSize(new Dimension(150, NomJ4.getPreferredSize().height));
+        
+        gbc.insets = new Insets(0, 100, 0, 0);
         panneauNomJoueurs.add(boutonValider1, gbc);
         
+        if (nbJoueur==2){
+            LabelNomJ1.setVisible(true);
+            LabelNomJ2.setVisible(true);
+            LabelNomJ3.setVisible(false);
+            LabelNomJ4.setVisible(false);
+            NomJ1.setVisible(true);
+            NomJ2.setVisible(true);
+            NomJ3.setVisible(false);
+            NomJ4.setVisible(false);
+        } else if (nbJoueur==3){
+            LabelNomJ1.setVisible(true);
+            LabelNomJ2.setVisible(true);
+            LabelNomJ3.setVisible(true);
+            LabelNomJ4.setVisible(false);
+            NomJ1.setVisible(true);
+            NomJ2.setVisible(true);
+            NomJ3.setVisible(true);
+            NomJ4.setVisible(false);
+        } else if (nbJoueur==4){
+            LabelNomJ1.setVisible(true);
+            LabelNomJ2.setVisible(true);
+            LabelNomJ3.setVisible(true);
+            LabelNomJ4.setVisible(true);
+            NomJ1.setVisible(true);
+            NomJ2.setVisible(true);
+            NomJ3.setVisible(true);
+            NomJ4.setVisible(true);
+        }
+    }
+    
+    //methode pour ajouter le panneauCarteEtBoutonsDeplacement a droite de la JFrame
+    public void ajouterpanneauCarteEtBoutonsDeplacement(){
+        placerElementspanneauCarteEtBoutonsDeplacement();
+        setLayout(new BorderLayout());
+        panneauCarteEtBoutonsDeplacement.setOpaque(false);
+        add(panneauCarteEtBoutonsDeplacement, BorderLayout.EAST);
+        panneauCarteEtBoutonsDeplacement.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 200));
+        setVisible(true);
+    }
+    
+    //methode pour placer mes élements sur le pannel panneauCarteEtBoutonsDeplacement
+    public void placerElementspanneauCarteEtBoutonsDeplacement(){
+        panneauCarteEtBoutonsDeplacement.setLayout(new GridBagLayout());
+        
+        // ajouter les éléments
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        
+        // boutonDeplacerBas 
+        gbc.insets = new Insets(500, 300, 0, 0);
+        panneauCarteEtBoutonsDeplacement.add(boutonDeplacerBas, gbc);
+        
+        // boutonDeplacerHaut 
+        gbc.insets = new Insets(400, 300, 0, 0);
+        panneauCarteEtBoutonsDeplacement.add(boutonDeplacerHaut, gbc);
+        
+        // boutonOK 
+        gbc.insets = new Insets(450, 300, 0, 0);
+        panneauCarteEtBoutonsDeplacement.add(boutonOK, gbc);
+        
+        // boutonDeplacerGauche 
+        gbc.insets = new Insets(450, 225, 0, 0);
+        panneauCarteEtBoutonsDeplacement.add(boutonDeplacerGauche, gbc);
+        
+        // boutonDeplacerDroite 
+        gbc.insets = new Insets(450, 375, 0, 0);
+        panneauCarteEtBoutonsDeplacement.add(boutonDeplacerDroite, gbc);
         
         
     }
     
+    //methode qui permet au joueur d'avancer
+    public void avancerCase(String direction){
+        plateau.plateauGraphique.avancerCase(joueurCourant.lireCouleur(), direction);   
+    }
+    
+    // methode qui creer les joueurs
+    public void creerJoueurs() {
+        if (!nomJ1.isEmpty()){
+            Joueur j1 = new Joueur(nomJ1);
+            listeJoueurs.add(j1);
+        }
+        if (!nomJ2.isEmpty()){
+            Joueur j2 = new Joueur(nomJ2);
+            listeJoueurs.add(j2);
+        }
+        if (!nomJ3.isEmpty()){
+            Joueur j3 = new Joueur(nomJ3);
+            listeJoueurs.add(j3);
+        }
+        if (!nomJ4.isEmpty()){
+            Joueur j4 = new Joueur(nomJ4);
+            listeJoueurs.add(j4);
+        }
+    }
+    
+    // methode qui distribut aleatoirement une couleur aux joueurs
+    public void attribuerCouleurJoueur() {
+        
+        ArrayList<String> dicoCouleur = new ArrayList<>();
+        dicoCouleur.add("bleu");
+        dicoCouleur.add("jaune");
+        dicoCouleur.add("rouge");
+        dicoCouleur.add("vert");
+        
+        for (int i=0 ; i<listeJoueurs.size() ; i++) {
+            int a = generateurAleat.nextInt(dicoCouleur.size());
+            listeJoueurs.get(i).affecterCouleur(dicoCouleur.get(a));
+            dicoCouleur.remove(a);
+        }
+      
+    }
+    
+    // creer la liste des objets à recolter pour chaque joueur
+    public void creerListeObjetsJoueur() {
+        CarteGraphique c = new CarteGraphique();
+        listeDeCartes = new ArrayList<>();
+        listeDeCartes = c.cartesObjet;
+        
+        // on veut 6 cartes par joueur
+        for (int i = 0 ; i<listeJoueurs.size() ; i++){
+            for (int j = 0 ; j<6 ; j++){
+                int a = generateurAleat.nextInt(listeDeCartes.size());
+                listeJoueurs.get(i).CartesJoueurs.add(listeDeCartes.get(a));
+                listeDeCartes.remove(a);
+            }
+        } 
+    }
+    
+    // changer le joueur courant
+    public void changerJoueurCourant(){
+        if (listeJoueurs.size()==2){
+            if (joueurCourant==listeJoueurs.get(0)){
+                joueurCourant=listeJoueurs.get(1);
+            } else {
+                joueurCourant=listeJoueurs.get(0);
+            }      
+            
+        }else if(listeJoueurs.size()==3){
+            if (joueurCourant==listeJoueurs.get(0)){
+                joueurCourant=listeJoueurs.get(1);
+            } else if (joueurCourant==listeJoueurs.get(1)){
+                joueurCourant=listeJoueurs.get(2);
+            } else {
+                joueurCourant=listeJoueurs.get(0);
+            }
+            
+        }else if(listeJoueurs.size()==4){
+            if (joueurCourant==listeJoueurs.get(0)){
+                joueurCourant=listeJoueurs.get(1);
+            } else if (joueurCourant==listeJoueurs.get(1)){
+                joueurCourant=listeJoueurs.get(2);
+            } else if (joueurCourant==listeJoueurs.get(2)){
+                joueurCourant=listeJoueurs.get(3);
+            } else {
+                joueurCourant=listeJoueurs.get(0);
+            }
+        }
+    }
+    
+    //methode qui initialise la partie
+    public void initialiserPartie(){
+        creerJoueurs();
+        attribuerCouleurJoueur();
+        creerListeObjetsJoueur();
+        // un joueur au hazard debute
+        
+        int a = generateurAleat.nextInt(listeJoueurs.size());
+        joueurCourant = listeJoueurs.get(a);
+        
+        // creer le plateau et affiche la position des joueurs
+        plateau = new PlateauGraphique();
+        for (int i=0 ; i<listeJoueurs.size() ; i++){
+            switch (listeJoueurs.get(i).lireCouleur()) {
+                case "bleu" :
+                    plateau.plateauGraphique.grilleDeJeu[0][0].setColPlayer("bleu");
+                    break;
+                case "jaune" :
+                    plateau.plateauGraphique.grilleDeJeu[6][0].setColPlayer("jaune");
+                    break;
+                case "rouge" :
+                    plateau.plateauGraphique.grilleDeJeu[6][6].setColPlayer("rouge");
+                    break;
+                case "vert" :
+                    plateau.plateauGraphique.grilleDeJeu[0][6].setColPlayer("vert");
+                    break;
+            }
+        }
+        
+        add(plateau.layeredPane);
+        ajouterpanneauCarteEtBoutonsDeplacement();   
+    }
     
     
     
@@ -179,6 +390,13 @@ public class PartieGraphique extends javax.swing.JFrame {
         NomJ3 = new javax.swing.JTextField();
         NomJ4 = new javax.swing.JTextField();
         boutonValider1 = new javax.swing.JToggleButton();
+        panneauCarteEtBoutonsDeplacement = new javax.swing.JPanel();
+        boutonDeplacerDroite = new javax.swing.JButton();
+        boutonDeplacerGauche = new javax.swing.JButton();
+        boutonDeplacerBas = new javax.swing.JButton();
+        boutonDeplacerHaut = new javax.swing.JButton();
+        boutonOK = new javax.swing.JButton();
+        CarteObjet = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -255,8 +473,15 @@ public class PartieGraphique extends javax.swing.JFrame {
         LabelNomJ4.setText("Nom Joueur 4 :");
 
         NomJ1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        NomJ1.setMinimumSize(new java.awt.Dimension(150, 250));
+        NomJ1.setName(""); // NOI18N
 
         NomJ2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        NomJ2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NomJ2ActionPerformed(evt);
+            }
+        });
 
         NomJ3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
@@ -283,11 +508,11 @@ public class PartieGraphique extends javax.swing.JFrame {
                     .addComponent(LabelNomJ4))
                 .addGap(30, 30, 30)
                 .addGroup(panneauNomJoueursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NomJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NomJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NomJ3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NomJ4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
+                    .addComponent(NomJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NomJ3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NomJ4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NomJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauNomJoueursLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(boutonValider1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,10 +539,95 @@ public class PartieGraphique extends javax.swing.JFrame {
                     .addComponent(LabelNomJ4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(boutonValider1)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panneauNomJoueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 670, 310));
+        getContentPane().add(panneauNomJoueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 570, 260));
+
+        boutonDeplacerDroite.setBackground(new java.awt.Color(153, 204, 255));
+        boutonDeplacerDroite.setText("►");
+        boutonDeplacerDroite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonDeplacerDroiteActionPerformed(evt);
+            }
+        });
+
+        boutonDeplacerGauche.setBackground(new java.awt.Color(153, 204, 255));
+        boutonDeplacerGauche.setText("◄");
+        boutonDeplacerGauche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonDeplacerGaucheActionPerformed(evt);
+            }
+        });
+
+        boutonDeplacerBas.setBackground(new java.awt.Color(153, 204, 255));
+        boutonDeplacerBas.setText("▼");
+        boutonDeplacerBas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonDeplacerBasActionPerformed(evt);
+            }
+        });
+
+        boutonDeplacerHaut.setBackground(new java.awt.Color(153, 204, 255));
+        boutonDeplacerHaut.setText("▲");
+        boutonDeplacerHaut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonDeplacerHautActionPerformed(evt);
+            }
+        });
+
+        boutonOK.setBackground(new java.awt.Color(153, 204, 255));
+        boutonOK.setText("OK");
+        boutonOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonOKActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panneauCarteEtBoutonsDeplacementLayout = new javax.swing.GroupLayout(panneauCarteEtBoutonsDeplacement);
+        panneauCarteEtBoutonsDeplacement.setLayout(panneauCarteEtBoutonsDeplacementLayout);
+        panneauCarteEtBoutonsDeplacementLayout.setHorizontalGroup(
+            panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
+                .addGroup(panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(boutonDeplacerBas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
+                                .addComponent(boutonDeplacerGauche, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(boutonOK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(boutonDeplacerDroite, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(boutonDeplacerHaut, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(418, Short.MAX_VALUE))
+        );
+        panneauCarteEtBoutonsDeplacementLayout.setVerticalGroup(
+            panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(boutonDeplacerHaut, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addGroup(panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boutonDeplacerGauche, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boutonDeplacerDroite, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boutonOK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boutonDeplacerBas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(panneauCarteEtBoutonsDeplacement, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 600, 220));
+
+        CarteObjet.setBackground(new java.awt.Color(153, 204, 255));
+        CarteObjet.setMinimumSize(new java.awt.Dimension(90, 90));
+        CarteObjet.setPreferredSize(new java.awt.Dimension(0, 0));
+        CarteObjet.setLayout(new java.awt.GridLayout(1, 1));
+        getContentPane().add(CarteObjet, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 800, 90, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -338,13 +648,62 @@ public class PartieGraphique extends javax.swing.JFrame {
                 }
         //supprimer le panneau
         remove(panneauJoueurs);
-         revalidate();
+        revalidate();
         repaint();
+        
+        //affiche le panneau avec les noms de joueurs
+        ajouterPanneauNomJoueur();
     }//GEN-LAST:event_boutonValiderActionPerformed
 
     private void boutonValider1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonValider1ActionPerformed
-        // TODO add your handling code here:
+        // recupérer le nom des joueurs
+        nomJ1 = NomJ1.getText();
+        nomJ2 = NomJ2.getText();
+        nomJ3 = NomJ3.getText();
+        nomJ4 = NomJ4.getText();
+        
+        //supprimer le panneau
+        remove(panneauNomJoueurs);
+        revalidate();
+        repaint();
+        System.out.println(nomJ1+nomJ2+nomJ3+nomJ4);
+        
+        //afficher la grille de jeu
+        initialiserPartie();
+        
     }//GEN-LAST:event_boutonValider1ActionPerformed
+
+    private void NomJ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomJ2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NomJ2ActionPerformed
+
+    private void boutonDeplacerDroiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDeplacerDroiteActionPerformed
+        avancerCase("droite");
+        plateau.mettreAJourPlateauGraphique();
+        repaint();
+    }//GEN-LAST:event_boutonDeplacerDroiteActionPerformed
+
+    private void boutonDeplacerGaucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDeplacerGaucheActionPerformed
+        avancerCase("gauche");
+        plateau.mettreAJourPlateauGraphique();
+        repaint();
+    }//GEN-LAST:event_boutonDeplacerGaucheActionPerformed
+
+    private void boutonDeplacerBasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDeplacerBasActionPerformed
+        avancerCase("bas");
+        plateau.mettreAJourPlateauGraphique();
+        repaint();
+    }//GEN-LAST:event_boutonDeplacerBasActionPerformed
+
+    private void boutonDeplacerHautActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDeplacerHautActionPerformed
+        avancerCase("haut");
+        plateau.mettreAJourPlateauGraphique();
+        repaint();
+    }//GEN-LAST:event_boutonDeplacerHautActionPerformed
+
+    private void boutonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonOKActionPerformed
+        changerJoueurCourant();
+    }//GEN-LAST:event_boutonOKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,6 +741,7 @@ public class PartieGraphique extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CarteObjet;
     private javax.swing.JLabel LabelNomJ1;
     private javax.swing.JLabel LabelNomJ2;
     private javax.swing.JLabel LabelNomJ3;
@@ -393,9 +753,15 @@ public class PartieGraphique extends javax.swing.JFrame {
     private javax.swing.JRadioButton bouton2J;
     private javax.swing.JRadioButton bouton3J;
     private javax.swing.JRadioButton bouton4J;
+    private javax.swing.JButton boutonDeplacerBas;
+    private javax.swing.JButton boutonDeplacerDroite;
+    private javax.swing.JButton boutonDeplacerGauche;
+    private javax.swing.JButton boutonDeplacerHaut;
+    private javax.swing.JButton boutonOK;
     private javax.swing.JToggleButton boutonValider;
     private javax.swing.JToggleButton boutonValider1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel panneauCarteEtBoutonsDeplacement;
     private javax.swing.JPanel panneauJoueurs;
     private javax.swing.JPanel panneauNomJoueurs;
     // End of variables declaration//GEN-END:variables

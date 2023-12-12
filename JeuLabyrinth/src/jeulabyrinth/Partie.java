@@ -17,6 +17,7 @@ public class Partie {
     private ArrayList<Joueur> listeJoueurs = new ArrayList<>();
     private Joueur joueurCourant;
     public Plateau plateau;
+    ArrayList<String> listeDeCartes;
     Random generateurAleat = new Random();
     Scanner sc = new Scanner(System.in);
 
@@ -65,7 +66,7 @@ public class Partie {
     // creer la liste des objets à recolter pour chaque joueur
     public void creerListeObjetsJoueur() {
         Carte c = new Carte();
-        ArrayList<String> listeDeCartes = new ArrayList<>();
+        listeDeCartes = new ArrayList<>();
         listeDeCartes = c.creerListeCarte();
         
         // on veut 6 cartes par joueur
