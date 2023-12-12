@@ -79,7 +79,7 @@ public class Plateau {
                                     {"cle","haut","droite","gauche"},
                                     {"couronne","haut","bas","gauche"},
                                     {"crane","haut","droite","bas"},
-                                    {"dragon","haut","droite","gauche"},
+                                    {"dragon","haut","droite","bas"},
                                     {"epee","haut","droite","bas"},
                                     {"fantome","haut","droite","gauche"},
                                     {"fee","haut","droite","gauche"},

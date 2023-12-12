@@ -411,6 +411,42 @@ public class PlateauGraphique extends javax.swing.JFrame {
         
     }
     
+    //methode pour cacher les boutons pour tourner et inserer la tuile
+    public void cacherBoutonsTuileCourante() {
+        boutonC2B.setVisible(false);
+        boutonC2H.setVisible(false);
+        boutonC4B.setVisible(false);
+        boutonC4H.setVisible(false);
+        boutonC6B.setVisible(false);
+        boutonC6H.setVisible(false);
+        boutonDroite.setVisible(false);
+        boutonGauche.setVisible(false);
+        boutonL2D.setVisible(false);
+        boutonL2G.setVisible(false);
+        boutonL4D.setVisible(false);
+        boutonL4G.setVisible(false);
+        boutonL6D.setVisible(false);
+        boutonL6G.setVisible(false);
+    }
+    
+    //methode pour affiche les boutons pour tourner et inserer la tuile
+    public void afficherBoutonsTuileCourante() {
+        boutonC2B.setVisible(true);
+        boutonC2H.setVisible(true);
+        boutonC4B.setVisible(true);
+        boutonC4H.setVisible(true);
+        boutonC6B.setVisible(true);
+        boutonC6H.setVisible(true);
+        boutonDroite.setVisible(true);
+        boutonGauche.setVisible(true);
+        boutonL2D.setVisible(true);
+        boutonL2G.setVisible(true);
+        boutonL4D.setVisible(true);
+        boutonL4G.setVisible(true);
+        boutonL6D.setVisible(true);
+        boutonL6G.setVisible(true);
+    }
+    
     
     
     

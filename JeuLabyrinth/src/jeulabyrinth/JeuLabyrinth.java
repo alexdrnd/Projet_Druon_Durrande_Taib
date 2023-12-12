@@ -19,7 +19,7 @@ public class JeuLabyrinth {
     public static void main(String[] args) {
         // TODO code application logic here
     
-     Partie p = new Partie();  
+     PartieGraphique p = new PartieGraphique();  
         
      
     }

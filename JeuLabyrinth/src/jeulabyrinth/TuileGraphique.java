@@ -24,7 +24,6 @@ public class TuileGraphique extends JButton {
     
     Tuile tuileAssociee;
     BufferedImage image = null;
-    BufferedImage positionJoueur = null;
 
     public TuileGraphique(Tuile tuileAssociee) {
         this.tuileAssociee = tuileAssociee;
