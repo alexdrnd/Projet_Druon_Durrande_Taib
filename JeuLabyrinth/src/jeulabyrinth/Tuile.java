@@ -48,7 +48,7 @@ public class Tuile {
         this.object = object;
         this.name = name;
         this.colPlayer = new ArrayList();
-        this.object = ObjetTuile();
+        //this.object = ObjetTuile();
        
     }
     

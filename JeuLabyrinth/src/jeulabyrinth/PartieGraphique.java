@@ -328,6 +328,24 @@ public class PartieGraphique extends javax.swing.JFrame {
                 joueurCourant=listeJoueurs.get(0);
             }
         }
+        
+        
+    }
+    
+    //methode qui recolte l'objet du joueur 
+    public void recolterObjet(){
+        //obtenir la position du joueur
+        for (int i = 0 ; i<7 ; i++){
+            for (int j=0 ; j<7 ; j++){
+                if(plateau.plateauGraphique.grilleDeJeu[i][j].colPlayer.contains(joueurCourant.lireCouleur())){
+                    Tuile t = plateau.plateauGraphique.grilleDeJeu[i][j];
+                    // verifier si la tuile contient l'objet que le joueur doit recolter
+                    if (t.getObject().equals(joueurCourant.CartesJoueurs.get(0))){
+                        joueurCourant.recolterObjet();
+                    }
+                }
+            }
+        }
     }
     
     //methode qui initialise la partie
@@ -399,7 +417,6 @@ public class PartieGraphique extends javax.swing.JFrame {
         CarteObjet = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
         setPreferredSize(new java.awt.Dimension(700, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -666,7 +683,6 @@ public class PartieGraphique extends javax.swing.JFrame {
         remove(panneauNomJoueurs);
         revalidate();
         repaint();
-        System.out.println(nomJ1+nomJ2+nomJ3+nomJ4);
         
         //afficher la grille de jeu
         initialiserPartie();
@@ -702,7 +718,11 @@ public class PartieGraphique extends javax.swing.JFrame {
     }//GEN-LAST:event_boutonDeplacerHautActionPerformed
 
     private void boutonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonOKActionPerformed
+        plateau.mettreAJourPlateauGraphique();
+        repaint();
+        recolterObjet();
         changerJoueurCourant();
+        System.out.println(joueurCourant.couleur + joueurCourant.getNom() + "Vous devez collecter l'objet " + joueurCourant.CartesJoueurs.get(0) + ". Il vous reste " + joueurCourant.CartesJoueurs.size() + " objets a recolter.");
     }//GEN-LAST:event_boutonOKActionPerformed
 
     /**
