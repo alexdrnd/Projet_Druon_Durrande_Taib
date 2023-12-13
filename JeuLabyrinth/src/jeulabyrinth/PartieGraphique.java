@@ -37,6 +37,7 @@ public class PartieGraphique extends javax.swing.JFrame {
     Random generateurAleat = new Random();
     ArrayList<String> listeDeCartes;
     private Joueur joueurCourant;
+    CarteGraphique CarteARecolter;
     
     
     
@@ -218,6 +219,11 @@ public class PartieGraphique extends javax.swing.JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         
+        gbc.insets = new Insets(10, 300, 0, 0);
+        MettreAjourCarteJoueur();
+        CarteObjet.setPreferredSize(new Dimension(150, 150));
+        panneauCarteEtBoutonsDeplacement.add(CarteObjet, gbc);
+        
         // boutonDeplacerBas 
         gbc.insets = new Insets(500, 300, 0, 0);
         panneauCarteEtBoutonsDeplacement.add(boutonDeplacerBas, gbc);
@@ -239,6 +245,13 @@ public class PartieGraphique extends javax.swing.JFrame {
         panneauCarteEtBoutonsDeplacement.add(boutonDeplacerDroite, gbc);
         
         
+    }
+    
+    //methode qui met à jour la carte du joueur à recolter
+    public void MettreAjourCarteJoueur() {
+        CarteObjet.removeAll();
+        CarteARecolter = new CarteGraphique(joueurCourant.CartesJoueurs.get(0));
+        CarteObjet.add(CarteARecolter);
     }
     
     //methode qui permet au joueur d'avancer
@@ -285,7 +298,7 @@ public class PartieGraphique extends javax.swing.JFrame {
     
     // creer la liste des objets à recolter pour chaque joueur
     public void creerListeObjetsJoueur() {
-        CarteGraphique c = new CarteGraphique();
+        CarteGraphique c = new CarteGraphique("heaume");
         listeDeCartes = new ArrayList<>();
         listeDeCartes = c.cartesObjet;
         
@@ -601,6 +614,11 @@ public class PartieGraphique extends javax.swing.JFrame {
             }
         });
 
+        CarteObjet.setBackground(new java.awt.Color(153, 204, 255));
+        CarteObjet.setMinimumSize(new java.awt.Dimension(90, 90));
+        CarteObjet.setPreferredSize(new java.awt.Dimension(0, 0));
+        CarteObjet.setLayout(new java.awt.GridLayout(1, 1));
+
         javax.swing.GroupLayout panneauCarteEtBoutonsDeplacementLayout = new javax.swing.GroupLayout(panneauCarteEtBoutonsDeplacement);
         panneauCarteEtBoutonsDeplacement.setLayout(panneauCarteEtBoutonsDeplacementLayout);
         panneauCarteEtBoutonsDeplacementLayout.setHorizontalGroup(
@@ -622,6 +640,11 @@ public class PartieGraphique extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addComponent(boutonDeplacerHaut, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(418, Short.MAX_VALUE))
+            .addGroup(panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(CarteObjet, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         panneauCarteEtBoutonsDeplacementLayout.setVerticalGroup(
             panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -636,15 +659,14 @@ public class PartieGraphique extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(boutonDeplacerBas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(CarteObjet, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         getContentPane().add(panneauCarteEtBoutonsDeplacement, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 600, 220));
-
-        CarteObjet.setBackground(new java.awt.Color(153, 204, 255));
-        CarteObjet.setMinimumSize(new java.awt.Dimension(90, 90));
-        CarteObjet.setPreferredSize(new java.awt.Dimension(0, 0));
-        CarteObjet.setLayout(new java.awt.GridLayout(1, 1));
-        getContentPane().add(CarteObjet, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 800, 90, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -719,9 +741,11 @@ public class PartieGraphique extends javax.swing.JFrame {
 
     private void boutonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonOKActionPerformed
         plateau.mettreAJourPlateauGraphique();
-        repaint();
+        plateau.afficherBoutonsTuileCourante();
         recolterObjet();
         changerJoueurCourant();
+        MettreAjourCarteJoueur();
+        repaint();
         System.out.println(joueurCourant.couleur + joueurCourant.getNom() + "Vous devez collecter l'objet " + joueurCourant.CartesJoueurs.get(0) + ". Il vous reste " + joueurCourant.CartesJoueurs.size() + " objets a recolter.");
     }//GEN-LAST:event_boutonOKActionPerformed
 
