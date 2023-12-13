@@ -43,7 +43,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
         
         // Utiliser un layout null pour le JLayeredPane
         layeredPane.setLayout(null);
-        layeredPane.setBounds(1000,1000,0,0);
+        
         
         // Récupérer la taille du JLayeredPane après que la fenêtre a été rendue
         pack();
@@ -86,49 +86,49 @@ public class PlateauGraphique extends javax.swing.JFrame {
         int boutonC2BWidth = boutonC2B.getWidth(); 
         int boutonC2BHeight = boutonC2B.getHeight();
         int boutonC2BX = (int) (layeredPaneWidth * 0.325); // 32.5% de la largeur du JLayeredPane
-        int boutonC2BY = (int) (layeredPaneHeight * 0.8); // 80% de la hauteur du JLayeredPane
+        int boutonC2BY = (int) (layeredPaneHeight * 0.88); // 80% de la hauteur du JLayeredPane
         boutonC2B.setBounds(boutonC2BX, boutonC2BY, boutonC2BWidth, boutonC2BHeight);
         
         //ajouter le boutonC4B sur le JlayeredPane
         int boutonC4BWidth = boutonC4B.getWidth(); 
         int boutonC4BHeight = boutonC4B.getHeight();
         int boutonC4BX = (int) (layeredPaneWidth * 0.443); // 44.3% de la largeur du JLayeredPane
-        int boutonC4BY = (int) (layeredPaneHeight * 0.8); // 80% de la hauteur du JLayeredPane
+        int boutonC4BY = (int) (layeredPaneHeight * 0.88); // 80% de la hauteur du JLayeredPane
         boutonC4B.setBounds(boutonC4BX, boutonC4BY, boutonC4BWidth, boutonC4BHeight);
         
         //ajouter le boutonC6B sur le JlayeredPane
         int boutonC6BWidth = boutonC6B.getWidth(); 
         int boutonC6BHeight = boutonC6B.getHeight();
         int boutonC6BX = (int) (layeredPaneWidth * 0.561); // 56.1% de la largeur du JLayeredPane
-        int boutonC6BY = (int) (layeredPaneHeight * 0.8); // 80% de la hauteur du JLayeredPane
+        int boutonC6BY = (int) (layeredPaneHeight * 0.88); // 80% de la hauteur du JLayeredPane
         boutonC6B.setBounds(boutonC6BX, boutonC6BY, boutonC6BWidth, boutonC6BHeight);
         
         //ajouter le boutonC2H sur le JlayeredPane
         int boutonC2HWidth = boutonC2H.getWidth(); 
         int boutonC2HHeight = boutonC2H.getHeight();
         int boutonC2HX = (int) (layeredPaneWidth * 0.325); // 32.5% de la largeur du JLayeredPane
-        int boutonC2HY = (int) (layeredPaneHeight * 0.15); // 15% de la hauteur du JLayeredPane
+        int boutonC2HY = (int) (layeredPaneHeight * 0.07); // 15% de la hauteur du JLayeredPane
         boutonC2H.setBounds(boutonC2HX, boutonC2HY, boutonC2HWidth, boutonC2HHeight);
         
         //ajouter le boutonC4H sur le JlayeredPane
         int boutonC4HWidth = boutonC4H.getWidth(); 
         int boutonC4HHeight = boutonC4H.getHeight();
         int boutonC4HX = (int) (layeredPaneWidth * 0.443); // 44.3% de la largeur du JLayeredPane
-        int boutonC4HY = (int) (layeredPaneHeight * 0.15); // 15% de la hauteur du JLayeredPane
+        int boutonC4HY = (int) (layeredPaneHeight * 0.07); // 15% de la hauteur du JLayeredPane
         boutonC4H.setBounds(boutonC4HX, boutonC4HY, boutonC4HWidth, boutonC4HHeight);
         
         //ajouter le boutonC6H sur le JlayeredPane
         int boutonC6HWidth = boutonC6H.getWidth(); 
         int boutonC6HHeight = boutonC6H.getHeight();
         int boutonC6HX = (int) (layeredPaneWidth * 0.561); // 56.1% de la largeur du JLayeredPane
-        int boutonC6HY = (int) (layeredPaneHeight * 0.15); // 15% de la hauteur du JLayeredPane
+        int boutonC6HY = (int) (layeredPaneHeight * 0.07); // 15% de la hauteur du JLayeredPane
         boutonC6H.setBounds(boutonC6HX, boutonC6HY, boutonC6HWidth, boutonC6HHeight);
         
         //ajouter le boutonL2G sur le JlayeredPane
         int boutonL2GWidth = boutonL2G.getWidth(); 
         int boutonL2GHeight = boutonL2G.getHeight();
         int boutonL2GX = (int) (layeredPaneWidth * 0.22); // 22% de la largeur du JLayeredPane
-        int boutonL2GY = (int) (layeredPaneHeight * 0.31); // 31% de la hauteur du JLayeredPane
+        int boutonL2GY = (int) (layeredPaneHeight * 0.265); // 31% de la hauteur du JLayeredPane
         boutonL2G.setBounds(boutonL2GX, boutonL2GY, boutonL2GWidth, boutonL2GHeight);
         
         //ajouter le boutonL4G sur le JlayeredPane
@@ -142,14 +142,14 @@ public class PlateauGraphique extends javax.swing.JFrame {
         int boutonL6GWidth = boutonL6G.getWidth(); 
         int boutonL6GHeight = boutonL6G.getHeight();
         int boutonL6GX = (int) (layeredPaneWidth * 0.22); 
-        int boutonL6GY = (int) (layeredPaneHeight * 0.64); 
+        int boutonL6GY = (int) (layeredPaneHeight * 0.689); 
         boutonL6G.setBounds(boutonL6GX, boutonL6GY, boutonL6GWidth, boutonL6GHeight);
         
         //ajouter le boutonL2D sur le JlayeredPane
         int boutonL2DWidth = boutonL2D.getWidth(); 
         int boutonL2DHeight = boutonL2D.getHeight();
         int boutonL2DX = (int) (layeredPaneWidth * 0.665); 
-        int boutonL2DY = (int) (layeredPaneHeight * 0.31); 
+        int boutonL2DY = (int) (layeredPaneHeight * 0.265); 
         boutonL2D.setBounds(boutonL2DX, boutonL2DY, boutonL2DWidth, boutonL2DHeight);
         
         //ajouter le boutonL4D sur le JlayeredPane
@@ -163,7 +163,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
         int boutonL6DWidth = boutonL6D.getWidth(); 
         int boutonL6DHeight = boutonL6D.getHeight();
         int boutonL6DX = (int) (layeredPaneWidth * 0.665); 
-        int boutonL6DY = (int) (layeredPaneHeight * 0.64); 
+        int boutonL6DY = (int) (layeredPaneHeight * 0.689); 
         boutonL6D.setBounds(boutonL6DX, boutonL6DY, boutonL6DWidth, boutonL6DHeight);
         
         // Ajouter les composants aux différentes couches
@@ -630,23 +630,23 @@ public class PlateauGraphique extends javax.swing.JFrame {
                             .addComponent(boutonL2G, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(boutonL6G, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(boutonL4G, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(boutonC2H, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(159, 159, 159)
+                        .addComponent(boutonC4H, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(162, 162, 162)
+                        .addComponent(boutonC6H, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(PlateauDeJeu, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(boutonL2D, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(boutonL4D, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boutonL6D, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(boutonC2H, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(159, 159, 159)
-                        .addComponent(boutonC4H, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(162, 162, 162)
-                        .addComponent(boutonC6H, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(144, 144, 144))))
+                            .addComponent(boutonL6D, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -673,28 +673,25 @@ public class PlateauGraphique extends javax.swing.JFrame {
                     .addComponent(boutonC4H, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boutonC2H, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boutonC6H, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(PlateauDeJeu, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(PlateauDeJeu, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(boutonC2B, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(boutonC6B, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(148, 148, 148))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(boutonC4B, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(135, 135, 135))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(TuileCourante, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(boutonGauche, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(boutonDroite, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(334, 334, 334))))))
+                        .addComponent(boutonC4B, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(135, 135, 135))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(TuileCourante, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boutonGauche, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boutonDroite, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(334, 334, 334))))
         );
 
         pack();
