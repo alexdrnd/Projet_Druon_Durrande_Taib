@@ -19,6 +19,8 @@ public class PlateauGraphique extends javax.swing.JFrame {
     TuileGraphique tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
     // Créer un JLayeredPane pour les composants graphique
     JLayeredPane layeredPane = new JLayeredPane();
+    // attribut qui prend une valeur quand le bouton est cliqué
+    int a=0;
     
     
     /**
@@ -31,6 +33,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
         tournerTuileCourante();
         insererTuileCouranteGraphique();
         ajouterElementsGraphique();
+        a=0;
     }
     
     
@@ -274,6 +277,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonL2G.addActionListener(ecouteurClick3);
@@ -286,6 +290,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonL4G.addActionListener(ecouteurClick4);
@@ -298,6 +303,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonL6G.addActionListener(ecouteurClick5);
@@ -310,6 +316,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonL2D.addActionListener(ecouteurClick6);
@@ -322,6 +329,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonL4D.addActionListener(ecouteurClick7);
@@ -334,6 +342,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonL6D.addActionListener(ecouteurClick8);
@@ -346,6 +355,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonC2H.addActionListener(ecouteurClick9);
@@ -358,6 +368,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonC4H.addActionListener(ecouteurClick10);
@@ -370,6 +381,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonC6H.addActionListener(ecouteurClick11);
@@ -382,6 +394,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonC2B.addActionListener(ecouteurClick12);
@@ -394,6 +407,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonC4B.addActionListener(ecouteurClick13);
@@ -406,6 +420,7 @@ public class PlateauGraphique extends javax.swing.JFrame {
                 tuileGraphiqueCourante = new  TuileGraphique(plateauGraphique.tuileCourante);
                 mettreAJourPlateauGraphique();
                 repaint();
+                a=1;
             }
         };
         boutonC6B.addActionListener(ecouteurClick14);
@@ -706,51 +721,51 @@ public class PlateauGraphique extends javax.swing.JFrame {
     }//GEN-LAST:event_boutonGaucheActionPerformed
 
     private void boutonL2GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonL2GActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonL2GActionPerformed
 
     private void boutonL4GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonL4GActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonL4GActionPerformed
 
     private void boutonL6GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonL6GActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonL6GActionPerformed
 
     private void boutonL2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonL2DActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonL2DActionPerformed
 
     private void boutonL4DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonL4DActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonL4DActionPerformed
 
     private void boutonL6DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonL6DActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonL6DActionPerformed
 
     private void boutonC2HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonC2HActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonC2HActionPerformed
 
     private void boutonC4HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonC4HActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonC4HActionPerformed
 
     private void boutonC6HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonC6HActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonC6HActionPerformed
 
     private void boutonC2BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonC2BActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonC2BActionPerformed
 
     private void boutonC4BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonC4BActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonC4BActionPerformed
 
     private void boutonC6BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonC6BActionPerformed
-        // TODO add your handling code here:
+        cacherBoutonsTuileCourante();
     }//GEN-LAST:event_boutonC6BActionPerformed
 
     /**

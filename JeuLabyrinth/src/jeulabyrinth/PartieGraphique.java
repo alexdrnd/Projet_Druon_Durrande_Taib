@@ -6,6 +6,7 @@ package jeulabyrinth;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -20,6 +21,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -32,7 +34,7 @@ public class PartieGraphique extends javax.swing.JFrame {
     String nomJ2;
     String nomJ3;
     String nomJ4;
-    PlateauGraphique plateau;
+    PlateauGraphique plateau = new PlateauGraphique();
     private ArrayList<Joueur> listeJoueurs = new ArrayList<>();
     Random generateurAleat = new Random();
     ArrayList<String> listeDeCartes;
@@ -208,6 +210,8 @@ public class PartieGraphique extends javax.swing.JFrame {
         add(panneauCarteEtBoutonsDeplacement, BorderLayout.EAST);
         panneauCarteEtBoutonsDeplacement.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 200));
         setVisible(true);
+        
+        
     }
     
     //methode pour placer mes élements sur le pannel panneauCarteEtBoutonsDeplacement
@@ -221,8 +225,17 @@ public class PartieGraphique extends javax.swing.JFrame {
         
         gbc.insets = new Insets(10, 300, 0, 0);
         MettreAjourCarteJoueur();
-        CarteObjet.setPreferredSize(new Dimension(150, 150));
+        CarteObjet.setPreferredSize(new Dimension(100, 100));
         panneauCarteEtBoutonsDeplacement.add(CarteObjet, gbc);
+        
+        
+        gbc.insets = new Insets(-600, 300, 0, 0);
+        MettreAjourTexteInstruction();
+        texte.setLineWrap(true); 
+        texte.setWrapStyleWord(true);
+        TexteInstruction.setPreferredSize(new Dimension(250, 100));
+        TexteInstruction.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        panneauCarteEtBoutonsDeplacement.add(TexteInstruction, gbc);
         
         // boutonDeplacerBas 
         gbc.insets = new Insets(500, 300, 0, 0);
@@ -252,6 +265,27 @@ public class PartieGraphique extends javax.swing.JFrame {
         CarteObjet.removeAll();
         CarteARecolter = new CarteGraphique(joueurCourant.CartesJoueurs.get(0));
         CarteObjet.add(CarteARecolter);
+    }
+    
+    //methode qui met à jour le texte des instructions
+    public void MettreAjourTexteInstruction(){
+        texte.setText(joueurCourant.nom + ", c'est à vous de jouer. Vous êtes le joueur " + joueurCourant.couleur + ". Vous devez récolter l'objet '" + joueurCourant.CartesJoueurs.get(0) + "'. Vous devez inserer la tuile, vous avez le droit de la touner. Déplacez vous ensuite jusqu'à l'objet.");
+    }
+    
+    //methode qui affiche l'écran de victoire
+    public void afficherEcranVictoire(){
+        if (joueurCourant.Victoire()){
+            panneauCarteEtBoutonsDeplacement.setVisible(false);
+            plateau.layeredPane.setVisible(false);
+            texteVictoire.setText("Bravo " + joueurCourant.nom + ", vous avez gagné !");
+            texteVictoire.setLineWrap(true); 
+            texteVictoire.setWrapStyleWord(true);
+            TexteVictoire.setPreferredSize(new Dimension(250, 100));
+            TexteVictoire.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+            TexteVictoire.setOpaque(false);
+            add(texteVictoire, BorderLayout.CENTER);
+            texteVictoire.setVisible(true);
+        }
     }
     
     //methode qui permet au joueur d'avancer
@@ -391,7 +425,17 @@ public class PartieGraphique extends javax.swing.JFrame {
         }
         
         add(plateau.layeredPane);
-        ajouterpanneauCarteEtBoutonsDeplacement();   
+        ajouterpanneauCarteEtBoutonsDeplacement();  
+        
+    }
+    
+    // methode pour rendre visible ou non les fleches de déplacement
+    public void afficherFlechesDeplacement(boolean b){
+        boutonDeplacerBas.setVisible(b);
+        boutonDeplacerDroite.setVisible(b);
+        boutonDeplacerGauche.setVisible(b);
+        boutonDeplacerHaut.setVisible(b);
+        boutonOK.setVisible(b);
     }
     
     
@@ -428,6 +472,10 @@ public class PartieGraphique extends javax.swing.JFrame {
         boutonDeplacerHaut = new javax.swing.JButton();
         boutonOK = new javax.swing.JButton();
         CarteObjet = new javax.swing.JPanel();
+        TexteInstruction = new javax.swing.JScrollPane();
+        texte = new javax.swing.JTextArea();
+        TexteVictoire = new javax.swing.JScrollPane();
+        texteVictoire = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 700));
@@ -651,14 +699,14 @@ public class PartieGraphique extends javax.swing.JFrame {
             .addGroup(panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(boutonDeplacerHaut, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addGap(49, 49, 49)
                 .addGroup(panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boutonDeplacerGauche, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boutonDeplacerDroite, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boutonOK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(boutonDeplacerBas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panneauCarteEtBoutonsDeplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panneauCarteEtBoutonsDeplacementLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -667,6 +715,18 @@ public class PartieGraphique extends javax.swing.JFrame {
         );
 
         getContentPane().add(panneauCarteEtBoutonsDeplacement, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 600, 220));
+
+        texte.setColumns(20);
+        texte.setRows(5);
+        TexteInstruction.setViewportView(texte);
+
+        getContentPane().add(TexteInstruction, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 790, -1, -1));
+
+        texteVictoire.setColumns(20);
+        texteVictoire.setRows(5);
+        TexteVictoire.setViewportView(texteVictoire);
+
+        getContentPane().add(TexteVictoire, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 890, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -719,6 +779,7 @@ public class PartieGraphique extends javax.swing.JFrame {
         avancerCase("droite");
         plateau.mettreAJourPlateauGraphique();
         repaint();
+        
     }//GEN-LAST:event_boutonDeplacerDroiteActionPerformed
 
     private void boutonDeplacerGaucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDeplacerGaucheActionPerformed
@@ -743,8 +804,10 @@ public class PartieGraphique extends javax.swing.JFrame {
         plateau.mettreAJourPlateauGraphique();
         plateau.afficherBoutonsTuileCourante();
         recolterObjet();
+        afficherEcranVictoire();
         changerJoueurCourant();
         MettreAjourCarteJoueur();
+        MettreAjourTexteInstruction();
         repaint();
         System.out.println(joueurCourant.couleur + joueurCourant.getNom() + "Vous devez collecter l'objet " + joueurCourant.CartesJoueurs.get(0) + ". Il vous reste " + joueurCourant.CartesJoueurs.size() + " objets a recolter.");
     }//GEN-LAST:event_boutonOKActionPerformed
@@ -794,6 +857,8 @@ public class PartieGraphique extends javax.swing.JFrame {
     private javax.swing.JTextField NomJ2;
     private javax.swing.JTextField NomJ3;
     private javax.swing.JTextField NomJ4;
+    private javax.swing.JScrollPane TexteInstruction;
+    private javax.swing.JScrollPane TexteVictoire;
     private javax.swing.JRadioButton bouton2J;
     private javax.swing.JRadioButton bouton3J;
     private javax.swing.JRadioButton bouton4J;
@@ -808,5 +873,7 @@ public class PartieGraphique extends javax.swing.JFrame {
     private javax.swing.JPanel panneauCarteEtBoutonsDeplacement;
     private javax.swing.JPanel panneauJoueurs;
     private javax.swing.JPanel panneauNomJoueurs;
+    private javax.swing.JTextArea texte;
+    private javax.swing.JTextArea texteVictoire;
     // End of variables declaration//GEN-END:variables
 }

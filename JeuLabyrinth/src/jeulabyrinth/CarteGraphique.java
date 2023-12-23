@@ -4,6 +4,7 @@
  */
 package jeulabyrinth;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -25,8 +26,13 @@ public class CarteGraphique extends JButton {
     ArrayList<String> cartesObjet = new ArrayList<String>();
     
     
-    public CarteGraphique() {
+    public CarteGraphique(String nomCarte) {
         creerListeCarte();
+        try {
+                this.image = ImageIO.read(new File("./test/imageTuiles1/" + nomCarte + ".png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
     
     
@@ -35,14 +41,16 @@ public class CarteGraphique extends JButton {
         String[] DicoCartesObjets = DicoObjets;
         for (int i=0 ; i<DicoCartesObjets.length ; i++) {
             cartesObjet.add(DicoCartesObjets[i]);
-            //charger l'image de la carte
-            try {
-                this.image = ImageIO.read(new File("./test/imageTuiles1/" + DicoCartesObjets[i] + ".png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         return cartesObjet;
+    }
+    
+    // afficher la tuile
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        //dessiner l'image
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
     }
     
 }
